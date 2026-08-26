@@ -24,6 +24,8 @@ Por se tratar de metadados originados de um caso de perícia computacional real,
 
 Cada arquivo `.json` corresponde à saída do `ffprobe` para uma gravação individual, no formato original de extração (streams + format).
 
+Camera_4.json — Metadados técnicos (ffprobe) de gravação da Câmera 04, contêiner AVI/H.264, 1280×720, 15 fps, ~30 min de duração (1798s). Identificadores de caminho, operador e caso pericial removidos; preservados apenas os parâmetros técnicos objetivos de codificação e estrutura de contêiner.
+
 ## Uso de Inteligência Artificial
 
 Ferramentas de IA generativa foram utilizadas como apoio à estruturação e à sanitização preliminar destes metadados. A curadoria, a definição dos critérios de sanitização e a validação final do corpus são de responsabilidade exclusiva dos autores.
