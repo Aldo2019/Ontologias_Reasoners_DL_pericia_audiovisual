@@ -20,3 +20,23 @@ Os arquivos JSON contidos neste repositório correspondem a metadados técnicos 
 Por se tratar de metadados originados de um caso de perícia computacional real, os dados foram **sanitizados** antes da publicação: identificadores de caminho de arquivo, nomes de operador e qualquer outro campo potencialmente identificável do caso pericial subjacente foram removidos ou generalizados. Foram preservados exclusivamente os padrões técnicos objetivos (parâmetros de codificação, estrutura de contêiner, timestamps, taxas de quadro), que constituem o objeto de investigação do artigo — a estrutura do metadado, e não o conteúdo substantivo do caso.
 
 ## Estrutura do repositório
+
+
+Cada arquivo `.json` corresponde à saída do `ffprobe` para uma gravação individual, no formato original de extração (streams + format).
+
+## Uso de Inteligência Artificial
+
+Ferramentas de IA generativa foram utilizadas como apoio à estruturação e à sanitização preliminar destes metadados. A curadoria, a definição dos critérios de sanitização e a validação final do corpus são de responsabilidade exclusiva dos autores.
+
+## Licença
+
+Este material é disponibilizado para fins de pesquisa e reprodutibilidade científica. [Defina aqui a licença desejada — sugestão: CC BY 4.0]
+
+## Citação
+
+Se utilizar este corpus, por favor cite o artigo original (referência completa acima) e este repositório.
+
+## Contato
+
+Aldo Faria Costa — aldofc@ufmg.br
+Programa de Pós-Graduação em Gestão e Organização do Conhecimento (PPGGOC), Escola de Ciência da Informação, UFMG
