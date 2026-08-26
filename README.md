@@ -26,6 +26,8 @@ Cada arquivo `.json` corresponde à saída do `ffprobe` para uma gravação indi
 
 Camera_4.json — Metadados técnicos (ffprobe) de gravação da Câmera 04, contêiner AVI/H.264, 1280×720, 15 fps, ~30 min de duração (1798s). Identificadores de caminho, operador e caso pericial removidos; preservados apenas os parâmetros técnicos objetivos de codificação e estrutura de contêiner.
 
+Camera_7_1.json a Camera_7_6.json — Série de 6 arquivos de metadados técnicos (ffprobe) da Câmera 07, mesmo sistema DVR, contêiner AVI/H.264, 1280×720, 15 fps, segmentos consecutivos de ~30 min cada (1798s), cobrindo o intervalo de aproximadamente 12h30 às 15h30 de um mesmo dia de gravação. Identificadores de caminho, operador e caso pericial removidos; preservados apenas os parâmetros técnicos objetivos. Esta série ilustra o padrão de segmentação temporal e a convenção de nomenclatura verbosa (com timestamps de início e término) característicos desta fonte, discutidos na Seção 5.4 do artigo.
+
 ## Uso de Inteligência Artificial
 
 Ferramentas de IA generativa foram utilizadas como apoio à estruturação e à sanitização preliminar destes metadados. A curadoria, a definição dos critérios de sanitização e a validação final do corpus são de responsabilidade exclusiva dos autores.
