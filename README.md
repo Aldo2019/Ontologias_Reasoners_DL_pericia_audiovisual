@@ -36,7 +36,7 @@ Ferramentas de IA generativa foram utilizadas como apoio à estruturação e à 
 
 ## Licença
 
-Este material é disponibilizado para fins de pesquisa e reprodutibilidade científica. [Defina aqui a licença desejada — sugestão: CC BY 4.0]
+Este material é disponibilizado para fins de pesquisa e reprodutibilidade científica. [licença CC BY 4.0]
 
 ## Citação
 
