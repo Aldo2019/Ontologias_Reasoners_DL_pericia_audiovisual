@@ -1,106 +1,136 @@
-# Corpus de Metadados Técnicos de Proveniência Audiovisual
+# Corpus Anônimo de Metadados Técnicos Audiovisuais
 
 ## Descrição
 
-Este repositório reúne um conjunto de metadados técnicos extraídos de
-gravações audiovisuais oriundas de um sistema DVR (Digital Video Recorder)
-com múltiplas câmeras. Os dados foram coletados por meio da ferramenta
-`ffprobe` (componente do projeto FFmpeg) e constituem o corpus empírico
-utilizado em uma pesquisa sobre heterogeneidade semântica em metadados
-periciais audiovisuais.
+Este repositório disponibiliza um corpus de metadados técnicos extraídos de gravações audiovisuais provenientes de um sistema de gravação digital (DVR — *Digital Video Recorder*) com múltiplas câmeras.
 
-O material é disponibilizado como apoio à reprodutibilidade científica e à
-avaliação por pares de um artigo submetido a periódico da área de Ciência
-da Informação, em conformidade com os princípios de Ciência Aberta e as
-diretrizes FAIR (Findable, Accessible, Interoperable, Reusable).
+Os dados foram obtidos por meio do `ffprobe`, componente do projeto FFmpeg, e são disponibilizados para fins de reprodutibilidade científica, transparência metodológica e avaliação por pares.
+
+O corpus permite examinar características estruturais e padrões de heterogeneidade presentes em metadados técnicos de arquivos audiovisuais provenientes de diferentes fontes de captura.
 
 ## Escopo dos dados
 
-Os arquivos aqui reunidos documentam quatro padrões recorrentes de
-heterogeneidade identificados entre fontes de captura distintas do mesmo
-sistema de vigilância:
+O corpus contempla quatro padrões recorrentes de heterogeneidade identificados nos metadados analisados:
 
-1. Divergência na identificação de contêiner multimídia
-2. Discrepância entre taxa de quadros nominal e taxa de quadros efetiva
-3. Redundância entre marcações temporais (*timestamps*)
-4. Ausência de convenção uniforme de nomenclatura entre fontes
+1. Divergência na identificação do contêiner multimídia;
+2. Discrepância entre taxa de quadros nominal e taxa de quadros efetiva;
+3. Redundância ou divergência entre marcações temporais (*timestamps*);
+4. Ausência de convenção uniforme de nomenclatura entre diferentes fontes de captura.
 
 ## Composição do corpus
 
-14 arquivos, 3 câmeras distintas, capturados em um único dia (abril de
-2024), cobrindo aproximadamente 3 horas de gravação simultânea, em dois
-formatos de contêiner (AVI/H.264 e DAV proprietário/H.265).
+O corpus é composto por **14 arquivos de metadados**, correspondentes a **3 câmeras distintas**, obtidos a partir de gravações realizadas em um mesmo período temporal.
+
+Os arquivos representam aproximadamente **3 horas de gravação**, distribuídas entre diferentes segmentos e dois grupos principais de estruturas de contêiner:
+
+* AVI/H.264;
+* DAV/H.265.
+
+Os arquivos disponibilizados correspondem exclusivamente aos metadados técnicos extraídos, não contendo o conteúdo audiovisual original.
 
 ## Arquivos
 
-| Arquivo | Câmera | Contêiner | Codec | Resolução | Tamanho | Padrão(ões) ilustrado(s) |
-|---|---|---|---|---|---|---|
-| `Camera_4.json` | 04 | AVI | H.264 | 1280×720 | 354.054.390 bytes | — (linha de base, contêiner/nomenclatura estáveis) |
-| `Camera_7_1.json` | 07 | AVI | H.264 | 1280×720 | 354.144.836 bytes | 5.4 — nomenclatura verbosa (início+fim) |
-| `Camera_7_2.json` | 07 | AVI | H.264 | 1280×720 | 354.124.396 bytes | 5.4 |
-| `Camera_7_3.json` | 07 | AVI | H.264 | 1280×720 | 354.147.456 bytes | 5.4 |
-| `Camera_7_4.json` | 07 | AVI | H.264 | 1280×720 | 354.103.738 bytes | 5.4 |
-| `Camera_7_5.json` | 07 | AVI | H.264 | 1280×720 | 354.200.142 bytes | 5.4 |
-| `Camera_7_6.json` | 07 | AVI | H.264 | 1280×720 | 354.143.854 bytes | 5.4 |
-| `Camera_9_1.json` | 09 | HEVC (raw) | H.265 | 1920×1080 | 1.306.066.944 bytes | 5.1 — probe_score 51, fluxo bruto |
-| `Camera_9_2.json` | 09 | DAV (dhav) | AAC+H.265 | 1920×1080 | 252.239.872 bytes | 5.3 — gap de ~2s áudio/vídeo |
-| `Camera_9_3.json` | 09 | DAV (dhav) | AAC+H.265 | 1920×1080 | 252.108.800 bytes | 5.3 |
-| `Camera_9_4.json` | 09 | DAV (dhav) | AAC+H.265 | 1920×1080 | 258.531.328 bytes | 5.3 |
-| `Camera_9_5.json` | 09 | DAV (dhav) | AAC+H.265 | 1920×1080 | 252.960.768 bytes | 5.3 |
-| `Camera_9_6.json` | 09 | HEVC (raw) | H.265 | 1920×1080 | 256.204.800 bytes | 5.1, 5.2 — probe_score 51, `r_frame_rate` anômalo |
-| `Camera_9_7.json` | 09 | HEVC (raw) | H.265 | 1920×1080 | 253.763.584 bytes | 5.1, 5.2 |
+| Arquivo           | Câmera | Contêiner  | Codec       | Resolução |             Tamanho | Padrão ilustrado                                 |
+| ----------------- | -----: | ---------- | ----------- | --------- | ------------------: | ------------------------------------------------ |
+| `Camera_4.json`   |     04 | AVI        | H.264       | 1280×720  |   354.054.390 bytes | Linha de base; contêiner e nomenclatura estáveis |
+| `Camera_7_1.json` |     07 | AVI        | H.264       | 1280×720  |   354.144.836 bytes | Nomenclatura com informações temporais           |
+| `Camera_7_2.json` |     07 | AVI        | H.264       | 1280×720  |   354.124.396 bytes | Nomenclatura com informações temporais           |
+| `Camera_7_3.json` |     07 | AVI        | H.264       | 1280×720  |   354.147.456 bytes | Nomenclatura com informações temporais           |
+| `Camera_7_4.json` |     07 | AVI        | H.264       | 1280×720  |   354.103.738 bytes | Nomenclatura com informações temporais           |
+| `Camera_7_5.json` |     07 | AVI        | H.264       | 1280×720  |   354.200.142 bytes | Nomenclatura com informações temporais           |
+| `Camera_7_6.json` |     07 | AVI        | H.264       | 1280×720  |   354.143.854 bytes | Nomenclatura com informações temporais           |
+| `Camera_9_1.json` |     09 | HEVC (raw) | H.265       | 1920×1080 | 1.306.066.944 bytes | `probe_score` 51; fluxo bruto                    |
+| `Camera_9_2.json` |     09 | DAV (dhav) | AAC + H.265 | 1920×1080 |   252.239.872 bytes | Defasagem temporal entre áudio e vídeo           |
+| `Camera_9_3.json` |     09 | DAV (dhav) | AAC + H.265 | 1920×1080 |   252.108.800 bytes | Estrutura DAV                                    |
+| `Camera_9_4.json` |     09 | DAV (dhav) | AAC + H.265 | 1920×1080 |   258.531.328 bytes | Estrutura DAV                                    |
+| `Camera_9_5.json` |     09 | DAV (dhav) | AAC + H.265 | 1920×1080 |   252.960.768 bytes | Estrutura DAV                                    |
+| `Camera_9_6.json` |     09 | HEVC (raw) | H.265       | 1920×1080 |   256.204.800 bytes | `probe_score` 51; `r_frame_rate` anômico         |
+| `Camera_9_7.json` |     09 | HEVC (raw) | H.265       | 1920×1080 |   253.763.584 bytes | Fluxo HEVC bruto                                 |
 
-### Descrição por grupo
+## Descrição dos grupos
 
-**Camera_4.json** — Metadados técnicos (ffprobe) de gravação da Câmera 04, contêiner AVI/H.264, 1280×720, 15 fps, ~30 min de duração (1798s). Identificadores de caminho, operador e caso pericial removidos; preservados apenas os parâmetros técnicos objetivos de codificação e estrutura de contêiner.
+### Camera_4.json
 
-**Camera_7_1.json a Camera_7_6.json** — Série de 6 arquivos de metadados técnicos (ffprobe) da Câmera 07, mesmo sistema DVR, contêiner AVI/H.264, 1280×720, 15 fps, segmentos consecutivos de ~30 min cada (1798s), cobrindo um intervalo de aproximadamente 3 horas de um mesmo dia de gravação. Identificadores de caminho, operador e caso pericial removidos; preservados apenas os parâmetros técnicos objetivos. Esta série ilustra o padrão de segmentação temporal e a convenção de nomenclatura verbosa (com timestamps de início e término) característicos desta fonte, discutidos na Seção 5.4 do artigo associado.
+Contém metadados técnicos de uma gravação da Câmera 04, com contêiner AVI e codec H.264, resolução de 1280×720 e taxa nominal de 15 fps. O arquivo representa aproximadamente 30 minutos de gravação.
 
-**Camera_9_1.json a Camera_9_7.json** — Série de 7 arquivos de metadados técnicos (ffprobe) da Câmera 09, mesmo sistema DVR, contêiner proprietário DAV (Dahua)/H.265, 1920×1080. A série ilustra os três padrões de heterogeneidade mais ricos discutidos no artigo associado: (i) divergência de identificação de contêiner — parte dos arquivos é reconhecida como `dhav` (probe_score 1) e parte como fluxo `hevc` bruto (probe_score 51); (ii) discrepância entre taxa de quadros nominal e efetiva nos arquivos "raw" (`r_frame_rate` retorna valor de timebase, não fps real); (iii) redundância e conflito entre os timestamps internos dos streams de áudio e vídeo em um mesmo arquivo (`dhav`), com defasagem de ~2 segundos entre eles. Os timestamps internos (`start_pts`/`start_time`) foram intencionalmente preservados por constituírem o objeto empírico de análise; identificadores de caminho, operador e caso pericial foram removidos.
+### Camera_7_1.json a Camera_7_6.json
+
+Conjunto de seis arquivos de metadados técnicos da Câmera 07, utilizando contêiner AVI e codec H.264, com resolução de 1280×720 e taxa nominal de 15 fps.
+
+Os arquivos correspondem a segmentos consecutivos de aproximadamente 30 minutos, totalizando aproximadamente três horas de gravação. O conjunto permite observar padrões de segmentação temporal e de nomenclatura.
+
+### Camera_9_1.json a Camera_9_7.json
+
+Conjunto de sete arquivos de metadados técnicos da Câmera 09, associados a gravações utilizando H.265.
+
+O grupo apresenta diferentes formas de identificação estrutural pelo `ffprobe`, incluindo arquivos reconhecidos como `dhav` e arquivos identificados como fluxo HEVC bruto. Também são observadas diferenças entre taxas de quadros nominais e efetivas e divergências entre marcações temporais internas dos fluxos de áudio e vídeo.
+
+Os campos temporais internos, incluindo `start_pts` e `start_time`, foram preservados por constituírem informações relevantes para a análise dos metadados.
+
+## Estrutura dos dados
+
+Cada arquivo `.json` corresponde à saída do `ffprobe` para uma gravação individual e contém informações técnicas referentes aos fluxos e ao contêiner multimídia.
+
+Os dados incluem, quando disponíveis, informações como:
+
+* identificação do formato;
+* contêiner;
+* codec;
+* resolução;
+* taxa de quadros;
+* duração;
+* bitrate;
+* informações de fluxo;
+* parâmetros temporais;
+* informações estruturais do arquivo.
+
+Não são disponibilizados os arquivos audiovisuais originais.
 
 ## Sanitização e privacidade
 
-Por razões de sigilo pericial e proteção de dados, os seguintes elementos
-foram generalizados ou removidos em todos os arquivos:
+Antes da disponibilização, os dados foram submetidos a procedimentos de sanitização destinados à remoção ou generalização de informações potencialmente identificadoras.
 
-- Identificadores de caso
-- Caminhos de arquivo completos
-- Nomes de operador do sistema de captura
+Foram removidos ou generalizados, quando presentes:
 
-A remoção desses elementos não compromete a validade da análise, uma vez
-que o objeto de investigação é a estrutura do metadado técnico, e não o
-conteúdo substantivo de qualquer caso pericial subjacente.
+* identificadores de caso;
+* caminhos completos de arquivos;
+* nomes de operadores;
+* informações diretamente associadas à identificação da fonte original.
 
-Cada arquivo `.json` corresponde à saída do `ffprobe` para uma gravação
-individual, no formato original de extração (streams + format).
+Foram preservados os parâmetros técnicos necessários à compreensão e à reprodução da análise, incluindo informações estruturais dos contêineres, codecs, fluxos e marcações temporais.
+
+A sanitização foi realizada de modo a preservar o conteúdo técnico necessário à investigação, sem disponibilizar informações que permitam identificar pessoas, casos ou fontes específicas.
 
 ## Ferramenta de extração
 
-Os dados foram extraídos com o `ffprobe`, ferramenta de linha de comando de
-código aberto que integra o projeto FFmpeg, amplamente validada pela
-comunidade técnica internacional para extração não invasiva de metadados
-de contêiner e de fluxo multimídia.
+Os metadados foram extraídos utilizando o `ffprobe`, ferramenta de linha de comando integrante do projeto FFmpeg.
+
+O `ffprobe` permite a inspeção não invasiva de informações relacionadas a contêineres e fluxos multimídia, possibilitando a obtenção de parâmetros técnicos sem alteração do conteúdo original analisado.
 
 ## Uso de Inteligência Artificial
 
-Ferramentas de IA generativa foram utilizadas como apoio à estruturação e
-à sanitização preliminar destes metadados. A curadoria, a definição dos
-critérios de sanitização e a validação final do corpus são de
-responsabilidade exclusiva dos autores.
+Ferramentas de inteligência artificial generativa foram utilizadas como apoio à organização e à sanitização preliminar dos dados.
+
+A definição dos critérios de sanitização, a curadoria do corpus e a validação final dos dados foram realizadas pelos pesquisadores responsáveis pelo estudo.
+
+A utilização de ferramentas de IA não substituiu a verificação humana dos dados disponibilizados.
+
+## Reprodutibilidade e Ciência Aberta
+
+O corpus é disponibilizado para favorecer a transparência metodológica, a reprodutibilidade dos procedimentos analíticos e a reutilização dos dados em pesquisas relacionadas à análise de metadados audiovisuais.
+
+Os dados foram organizados em formato estruturado (`JSON`) para facilitar sua leitura, processamento automatizado e reutilização em diferentes ambientes computacionais.
 
 ## Licença
 
-Este material é disponibilizado para fins de pesquisa e reprodutibilidade
-científica, sob licença CC BY 4.0.
+Este material é disponibilizado para fins de pesquisa e reprodutibilidade científica sob a licença **CC BY 4.0**.
 
 ## Como citar
 
-*Informação de citação será adicionada após a publicação do artigo
-associado a este repositório.*
+A informação bibliográfica para citação será disponibilizada juntamente com a versão definitiva do estudo.
 
 ## Status
 
-Este repositório está em processo de avaliação por pares. A versão
-espelhada anônima disponibilizada durante essa etapa não contém
-identificação de autoria nem título do artigo associado, em conformidade
-com o processo de avaliação cega adotado pelo periódico.
+Este repositório é disponibilizado em versão anônima para fins de avaliação por pares.
+
+A versão pública durante o processo de revisão não contém nomes de autores, afiliações institucionais, informações de contato ou outros elementos destinados à identificação dos pesquisadores responsáveis pelo estudo.
