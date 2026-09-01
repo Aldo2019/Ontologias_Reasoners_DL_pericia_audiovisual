@@ -8,6 +8,39 @@ Os dados foram obtidos por meio do `ffprobe`, componente do projeto FFmpeg, e s�
 
 O corpus permite examinar características estruturais e padrões de heterogeneidade presentes em metadados técnicos de arquivos audiovisuais provenientes de diferentes fontes de captura.
 
+Este repositório reúne os materiais de apoio à pesquisa, em conformidade com os princípios de Ciência Aberta e as diretrizes FAIR (Wilkinson et al., 2016):
+
+```
+.
+├── data/
+│   ├── data_dictionary.md      # dicionário de dados: descrição de cada campo extraído
+│   └── metadados_exemplo.csv   # amostra ilustrativa da estrutura do corpus (ver aviso abaixo)
+├── ontology/
+│   ├── esqueleto_conceitual.ttl  # esqueleto de classes/propriedades/axiomas em OWL (Turtle)
+│   └── README.md                 # escopo e limitações do arquivo OWL
+├── scripts/
+│   ├── extract_metadata.sh       # comando ffprobe utilizado na extração
+│   └── README.md
+├── CITATION.cff
+├── LICENSE            # código: MIT
+└── LICENSE-DATA.md    # dados: CC BY 4.0
+```
+
+## Sobre a pesquisa
+
+O artigo identifica quatro padrões recorrentes de heterogeneidade semântica em metadados técnicos de proveniência audiovisual (divergência de *contêiner*, discrepância entre taxa de quadros nominal e efetiva, redundância de *timestamps* e ausência de convenção de nomenclatura), extraídos via `ffprobe` de um corpus real oriundo de um sistema DVR multi-câmera, e propõe, a partir deles, um esquema conceitual preliminar de classes, propriedades e axiomas em Lógica Descritiva (LD), estruturalmente alinhado ao padrão PROV-O.
+
+**Este é um esquema conceitual preliminar, não implementado nem validado por raciocinador.** O arquivo `.ttl` em `ontology/` é fornecido para transparência e reprodutibilidade da proposta, não como ontologia testada — ver `ontology/README.md` para o escopo exato.
+
+## Como citar
+
+Ver `CITATION.cff`. Durante o processo de avaliação por pares do artigo, o acesso a este material é fornecido por meio de espelho anonimizado, em conformidade com a política de avaliação cega do periódico.
+
+## Licença
+
+- Código (`scripts/`): MIT — ver `LICENSE`.
+- Dados e documentação (`data/`, `ontology/`): CC BY 4.0 — ver `LICENSE-DATA.md`.
+
 ## Escopo dos dados
 
 O corpus contempla quatro padrões recorrentes de heterogeneidade identificados nos metadados analisados:
