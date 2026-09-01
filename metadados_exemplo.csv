@@ -1,0 +1,6 @@
+source_id,evidence_id,container_reported,probe_score,r_frame_rate,avg_frame_rate,start_time,start_pts,filename_timestamp,naming_convention,codec
+cam01,e001,raw,45,30000/1001,29.970046,0.000000,0,ch01_20260114_081500,pattern_A,hevc
+cam01,e001,dav_proprietario,97,30000/1001,29.970046,0.000000,0,ch01_20260114_081500,pattern_A,hevc
+cam02,e002,avi,88,90000/1,25.011234,0.033367,3003,20260114-0815-ch2,pattern_B,h264
+cam02,e002,avi,31,90000/1,25.011234,0.033367,3003,20260114-0815-ch2,pattern_B,h264
+cam03,e003,raw,52,25/1,24.983221,0.040000,3600,cam3_recording_0815,pattern_C,hevc
