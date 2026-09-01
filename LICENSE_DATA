@@ -1,9 +1,0 @@
-# Licença dos dados e da documentação
-
-O conteúdo das pastas `data/` e `ontology/` (dicionário de dados, amostra de metadados, esqueleto ontológico e respectivos README) está licenciado sob **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
-
-Texto completo da licença: https://creativecommons.org/licenses/by/4.0/deed.pt_BR
-
-Ao reutilizar este material, favor citar conforme `CITATION.cff`.
-
-O código em `scripts/` está licenciado separadamente sob MIT — ver `LICENSE`.
