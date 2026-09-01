@@ -41,6 +41,24 @@ Ver `CITATION.cff`. Durante o processo de avaliação por pares do artigo, o ace
 - Código (`scripts/`): MIT — ver `LICENSE`.
 - Dados e documentação (`data/`, `ontology/`): CC BY 4.0 — ver `LICENSE-DATA.md`.
 
+# Esquema conceitual (OWL / Turtle)
+
+`esquema_conceitual.ttl` reproduz, em sintaxe Turtle (OWL 2 DL), os axiomas discutidos na Seção 6 do artigo: as sete classes principais (Seção 6.1), as propriedades de objeto e de dado e as duas classes definidas por restrição — `MetadadoDivergente` e `ConfiabilidadeBaixa` (Seção 6.2) —, além do alinhamento a PROV-O (Seção 6.3) e da ABox de exemplo (Seção 6.2.1).
+
+## Escopo e limitações
+
+Conforme a Seção 6.4 do artigo:
+
+- **Não foi submetido a testes de consistência por raciocinador** (HermiT, Pellet, Konclude). As classificações esperadas da ABox de exemplo estão documentadas como comentário no final do arquivo, não como resultado de execução real.
+- **Não constitui ontologia de domínio completa.**
+- A comparação de valores subjacente a `correlacionaComDivergencia` é responsabilidade de um procedimento externo à ontologia (ver `scripts/`), não do raciocinador.
+- O limiar de `0.5` em `ConfiabilidadeBaixa` é provisório (Seção 6.2).
+
+## Como inspecionar
+
+Abra o arquivo no [Protégé](https://protege.stanford.edu/) para visualizar a hierarquia de classes e propriedades. Rodar um raciocinador sobre este arquivo é encorajado como verificação independente, mas qualquer resultado obtido dessa forma **não deve ser citado como validação do artigo atual** — a validação por implementação é indicada, no artigo, como etapa subsequente da pesquisa (Seção 8).
+
+
 ## Escopo dos dados
 
 O corpus contempla quatro padrões recorrentes de heterogeneidade identificados nos metadados analisados:
