@@ -37,12 +37,15 @@ O artigo identifica quatro padrões recorrentes de heterogeneidade semântica em
 ## Como citar
 
 Durante o processo de avaliação por pares do artigo, o acesso a este material é fornecido por meio de espelho anonimizado, em conformidade com a política de avaliação cega do periódico.
+A informação bibliográfica para citação será disponibilizada juntamente com a versão definitiva do estudo.
 
 # Licença dos dados e da documentação
 
 O conteúdo das pastas `data/` e `ontology/` (dicionário de dados, amostra de metadados, esquema ontológico e respectivos README) está licenciado sob **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
 
 Texto completo da licença: https://creativecommons.org/licenses/by/4.0/deed.pt_BR
+
+Este material é disponibilizado para fins de pesquisa e reprodutibilidade científica sob a licença **CC BY 4.0**.
 
 # Scripts de extração
 
@@ -203,14 +206,6 @@ A utilização de ferramentas de IA não substituiu a verificação humana dos d
 O corpus é disponibilizado para favorecer a transparência metodológica, a reprodutibilidade dos procedimentos analíticos e a reutilização dos dados em pesquisas relacionadas à análise de metadados audiovisuais.
 
 Os dados foram organizados em formato estruturado (`JSON`) para facilitar sua leitura, processamento automatizado e reutilização em diferentes ambientes computacionais.
-
-## Licença
-
-Este material é disponibilizado para fins de pesquisa e reprodutibilidade científica sob a licença **CC BY 4.0**.
-
-## Como citar
-
-A informação bibliográfica para citação será disponibilizada juntamente com a versão definitiva do estudo.
 
 ## Status
 
