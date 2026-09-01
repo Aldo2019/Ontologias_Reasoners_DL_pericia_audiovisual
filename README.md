@@ -21,7 +21,7 @@ Este repositório reúne os materiais de apoio à pesquisa, em conformidade com 
 │   ├── esquema_conceitual.ttl  # esquema de classes/propriedades/axiomas em OWL (Turtle)
 │   └── README.md                 # escopo e limitações do arquivo OWL
 ├── scripts/
-│   ├── extract_metadata.sh       # comando ffprobe utilizado na extração
+│   ├── extract_metadata.py      # comando ffprobe utilizado na extração
 │   └── README.md
 ├── 
 ├── LICENSE            # código: MIT
@@ -46,13 +46,9 @@ Texto completo da licença: https://creativecommons.org/licenses/by/4.0/deed.pt_
 
 # Scripts de extração
 
-`extract_metadata.sh` documenta o comando `ffprobe` (Seção 4) utilizado para extrair os metadados técnicos de cada arquivo do corpus, em formato JSON, posteriormente consolidado nos campos descritos em `data/data_dictionary.md`.
+`extract_metadata.py` documenta o comando `ffprobe` (Seção 4) utilizado para extrair os metadados técnicos de cada arquivo do corpus, em formato JSON, posteriormente consolidado nos campos descritos em `data/data_dictionary.md`.
 
 ## Uso
-
-```bash
-./extract_metadata.sh caminho/para/arquivo.mp4 > saida.json
-```
 
 Requer `ffmpeg`/`ffprobe` instalado (https://ffmpeg.org/download.html).
 
@@ -75,7 +71,7 @@ Abra o arquivo no [Protégé](https://protege.stanford.edu/) para visualizar a h
 
  Dicionário de dados
 
-Descreve os campos extraídos via `ffprobe` (ver `scripts/extract_metadata.sh`) que compõem o corpus analisado no artigo (Seção 4 e 5). Identificadores de caso, nomes de operador e caminhos de arquivo foram generalizados por sigilo pericial (Seção 4).
+Descreve os campos extraídos via `ffprobe` (ver `extract_metadata.py`) que compõem o corpus analisado no artigo (Seção 4 e 5). Identificadores de caso, nomes de operador e caminhos de arquivo foram generalizados por sigilo pericial (Seção 4).
 
 | Campo               | Tipo         | Descrição                                                                 | Padrão relacionado (Seção 5) |
 |---------------------|--------------|----------------------------------------------------------------------------|-------------------------------|
