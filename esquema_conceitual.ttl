@@ -1,0 +1,564 @@
+@prefix : <http://example.org/pericia-audiovisual#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+#################################################################
+# Esquema conceitual em OWL 2 DL — proposta preliminar
+#
+# Corresponde aos axiomas discutidos na Seção 6 do artigo
+# "Padrões de heterogeneidade semântica em metadados de
+# proveniência audiovisual: um esquema conceitual em lógica
+# descritiva".
+#
+# AVISO: este arquivo NÃO foi submetido a testes de consistência
+# nem classificado por raciocinador (HermiT/Pellet/Konclude).
+# É fornecido para transparência e reprodutibilidade da proposta
+# conceitual, não como ontologia validada (ver Seção 6.4 —
+# Limitações — do artigo).
+#################################################################
+
+<http://example.org/pericia-audiovisual> a owl:Ontology ;
+    rdfs:label "Esquema conceitual — metadados de proveniência audiovisual"@pt ;
+    rdfs:comment "Proposta preliminar, não implementada nem validada. Ver Seção 6.4 do artigo."@pt ;
+    owl:imports <http://www.w3.org/ns/prov-o> .
+
+#################################################################
+# Classes (Seção 6.1)
+#################################################################
+
+:EvidenciaAudiovisual a owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Evidência Audiovisual"@pt .
+
+:FonteDeCaptura a owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Fonte de Captura"@pt ;
+    rdfs:comment "Dispositivo ou sistema tecnicamente responsável pela geração original. Modelado como prov:Entity, não como agente (Seção 6.3)."@pt .
+
+:OperadorResponsavel a owl:Class ;
+    rdfs:subClassOf prov:Agent ;
+    rdfs:label "Operador Responsável"@pt ;
+    rdfs:comment "Pessoa física ou organização responsável pela operação de uma FonteDeCaptura."@pt .
+
+:EventoDeCaptura a owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "Evento de Captura"@pt .
+
+:MetadadoTecnico a owl:Class ;
+    rdfs:label "Metadado Técnico"@pt ;
+    rdfs:comment "Atributo técnico extraído de uma evidência, tratado por reificação como indivíduo dotado de identidade própria."@pt .
+
+:EventoDeCustodia a owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "Evento de Custódia"@pt .
+
+:EventoDeGeracao a owl:Class ;
+    rdfs:subClassOf :EventoDeCustodia ;
+    rdfs:label "Evento de Geração"@pt .
+
+:EventoDeInvalidacao a owl:Class ;
+    rdfs:subClassOf :EventoDeCustodia ;
+    rdfs:label "Evento de Invalidação"@pt .
+
+owl:AllDisjointClasses [
+    owl:members ( :EventoDeGeracao :EventoDeInvalidacao )
+] .
+
+#################################################################
+# Propriedades de objeto (Seção 6.2, 6.3)
+#################################################################
+
+:temFonte a owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasGeneratedBy ;
+    rdfs:domain :EvidenciaAudiovisual ;
+    rdfs:range :EventoDeCaptura ;
+    rdfs:comment "Geração técnica do arquivo, mediada por um evento — não atribuição direta de responsabilidade a um agente (Seção 6.3)."@pt .
+
+:temDispositivoEnvolvido a owl:ObjectProperty ;
+    rdfs:domain :EventoDeCaptura ;
+    rdfs:range :FonteDeCaptura .
+
+:temOperador a owl:ObjectProperty ;
+    rdfs:domain :FonteDeCaptura ;
+    rdfs:range :OperadorResponsavel .
+
+:temMetadado a owl:ObjectProperty ;
+    rdfs:domain :EvidenciaAudiovisual ;
+    rdfs:range :MetadadoTecnico .
+
+:temGeracao a owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasGeneratedBy ;
+    rdfs:domain :EvidenciaAudiovisual ;
+    rdfs:range :EventoDeGeracao .
+
+:temInvalidacao a owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasInvalidatedBy ;
+    rdfs:domain :EvidenciaAudiovisual ;
+    rdfs:range :EventoDeInvalidacao .
+
+:correlacionaCom a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:domain :MetadadoTecnico ;
+    rdfs:range :MetadadoTecnico .
+
+:correlacionaComDivergencia a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf :correlacionaCom ;
+    rdfs:comment "Asserida por procedimento de pré-processamento externo à ontologia (pipeline de extração), não inferida (Seção 6.2)."@pt .
+
+:correlacionaComEquivalencia a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf :correlacionaCom .
+
+[] a owl:AllDisjointProperties ;
+    owl:members ( :correlacionaComDivergencia :correlacionaComEquivalencia ) .
+
+#################################################################
+# Propriedades de dado (Seção 6.2)
+#################################################################
+
+:temGrauDeConfianca a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain :MetadadoTecnico ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "Imagem em xsd:decimal no intervalo [0,0; 1,0]."@pt .
+
+#################################################################
+# Classes definidas por restrição (Seção 6.2)
+#################################################################
+
+# MetadadoDivergente ≡ MetadadoTécnico ⊓ ∃correlacionaComDivergência.MetadadoTécnico
+:MetadadoDivergente a owl:Class ;
+    rdfs:subClassOf :MetadadoTecnico ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :MetadadoTecnico
+            [ a owl:Restriction ;
+              owl:onProperty :correlacionaComDivergencia ;
+              owl:someValuesFrom :MetadadoTecnico ]
+        )
+    ] ;
+    rdfs:label "Metadado Divergente"@pt .
+
+# ConfiabilidadeBaixa ≡ MetadadoTécnico ⊓ ∃temGrauDeConfiança.(xsd:decimal[< "0.5"])
+:ConfiabilidadeBaixa a owl:Class ;
+    rdfs:subClassOf :MetadadoTecnico ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :MetadadoTecnico
+            [ a owl:Restriction ;
+              owl:onProperty :temGrauDeConfianca ;
+              owl:someValuesFrom [
+                  a rdfs:Datatype ;
+                  owl:onDatatype xsd:decimal ;
+                  owl:withRestrictions ( [ xsd:maxExclusive "0.5"^^xsd:decimal ] )
+              ] ]
+        )
+    ] ;
+    rdfs:label "Confiabilidade Baixa"@pt .
+
+#################################################################
+# ABox de exemplo (Seção 6.2.1) — individuos ilustrativos
+#################################################################
+
+:m1 a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate, câmera 1, evidência e1"@pt .
+
+:m2 a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate, câmera 1, evidência e1"@pt .
+
+:m3 a :MetadadoTecnico ;
+    :temGrauDeConfianca "0.31"^^xsd:decimal ;
+    rdfs:comment "contêiner, câmera 2, evidência e2"@pt .
+
+:ec1 a :EventoDeCaptura .
+
+:fc1 a :FonteDeCaptura ;
+    rdfs:comment "DVR, canal 2"@pt .
+
+:m1 :correlacionaComDivergencia :m2 .
+:e2 :temFonte :ec1 .
+:ec1 :temDispositivoEnvolvido :fc1 .
+
+# Classificações esperadas de um raciocinador padrão (não executado
+# neste repositório — ver aviso no topo do arquivo):
+#   :m1 rdf:type :MetadadoDivergente .
+#   :m2 rdf:type :MetadadoDivergente .
+#   :m3 rdf:type :ConfiabilidadeBaixa .
+
+
+#################################################################
+# ABox expandida — corpus real (Seção 5), 14 fontes (Câmeras 4, 7, 9)
+#
+# Gerada deterministicamente a partir dos metadados brutos extraídos
+# via ffprobe (ver scripts/populate_abox.py no repositório). Os
+# identificadores de arquivo já são genéricos (Camera_N[_segmento]),
+# sem qualquer dado que identifique caso, operador ou instituição.
+#
+# Mesma ressalva do topo do arquivo: fatos ASSERIDOS a partir dos
+# valores brutos (comparação feita neste script, fora da ontologia);
+# classificações em MetadadoDivergente / ConfiabilidadeBaixa são o
+# que um raciocinador inferiria a partir destes fatos — não foram
+# executadas por um raciocinador real neste repositório.
+#################################################################
+
+:FonteDeCaptura_Camera_4 a :FonteDeCaptura ;
+    rdfs:comment "Câmera/canal DVR — grupo Camera_4"@pt .
+
+:FonteDeCaptura_Camera_7 a :FonteDeCaptura ;
+    rdfs:comment "Câmera/canal DVR — grupo Camera_7"@pt .
+
+:FonteDeCaptura_Camera_9 a :FonteDeCaptura ;
+    rdfs:comment "Câmera/canal DVR — grupo Camera_9"@pt .
+
+:Camera_4 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_4, formato reportado avi"@pt .
+
+:Camera_4_evento a :EventoDeCaptura .
+:Camera_4 :temFonte :Camera_4_evento .
+:Camera_4_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_4 .
+
+:Camera_4_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "1.00"^^xsd:decimal ;
+    rdfs:comment "container_reported=avi, probe_score=100/100 (normalizado 1.00)"@pt .
+:Camera_4 :temMetadado :Camera_4_container .
+
+:Camera_4_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=15/1"@pt .
+:Camera_4_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=15/1"@pt .
+:Camera_4 :temMetadado :Camera_4_rfr, :Camera_4_avgfr .
+:Camera_4_rfr :correlacionaComEquivalencia :Camera_4_avgfr .
+
+:Camera_7_1 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_7_1, formato reportado avi"@pt .
+
+:Camera_7_1_evento a :EventoDeCaptura .
+:Camera_7_1 :temFonte :Camera_7_1_evento .
+:Camera_7_1_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+
+:Camera_7_1_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "1.00"^^xsd:decimal ;
+    rdfs:comment "container_reported=avi, probe_score=100/100 (normalizado 1.00)"@pt .
+:Camera_7_1 :temMetadado :Camera_7_1_container .
+
+:Camera_7_1_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=15/1"@pt .
+:Camera_7_1_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=15/1"@pt .
+:Camera_7_1 :temMetadado :Camera_7_1_rfr, :Camera_7_1_avgfr .
+:Camera_7_1_rfr :correlacionaComEquivalencia :Camera_7_1_avgfr .
+
+:Camera_7_2 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_7_2, formato reportado avi"@pt .
+
+:Camera_7_2_evento a :EventoDeCaptura .
+:Camera_7_2 :temFonte :Camera_7_2_evento .
+:Camera_7_2_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+
+:Camera_7_2_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "1.00"^^xsd:decimal ;
+    rdfs:comment "container_reported=avi, probe_score=100/100 (normalizado 1.00)"@pt .
+:Camera_7_2 :temMetadado :Camera_7_2_container .
+
+:Camera_7_2_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=15/1"@pt .
+:Camera_7_2_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=15/1"@pt .
+:Camera_7_2 :temMetadado :Camera_7_2_rfr, :Camera_7_2_avgfr .
+:Camera_7_2_rfr :correlacionaComEquivalencia :Camera_7_2_avgfr .
+
+:Camera_7_3 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_7_3, formato reportado avi"@pt .
+
+:Camera_7_3_evento a :EventoDeCaptura .
+:Camera_7_3 :temFonte :Camera_7_3_evento .
+:Camera_7_3_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+
+:Camera_7_3_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "1.00"^^xsd:decimal ;
+    rdfs:comment "container_reported=avi, probe_score=100/100 (normalizado 1.00)"@pt .
+:Camera_7_3 :temMetadado :Camera_7_3_container .
+
+:Camera_7_3_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=15/1"@pt .
+:Camera_7_3_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=15/1"@pt .
+:Camera_7_3 :temMetadado :Camera_7_3_rfr, :Camera_7_3_avgfr .
+:Camera_7_3_rfr :correlacionaComEquivalencia :Camera_7_3_avgfr .
+
+:Camera_7_4 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_7_4, formato reportado avi"@pt .
+
+:Camera_7_4_evento a :EventoDeCaptura .
+:Camera_7_4 :temFonte :Camera_7_4_evento .
+:Camera_7_4_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+
+:Camera_7_4_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "1.00"^^xsd:decimal ;
+    rdfs:comment "container_reported=avi, probe_score=100/100 (normalizado 1.00)"@pt .
+:Camera_7_4 :temMetadado :Camera_7_4_container .
+
+:Camera_7_4_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=15/1"@pt .
+:Camera_7_4_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=15/1"@pt .
+:Camera_7_4 :temMetadado :Camera_7_4_rfr, :Camera_7_4_avgfr .
+:Camera_7_4_rfr :correlacionaComEquivalencia :Camera_7_4_avgfr .
+
+:Camera_7_5 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_7_5, formato reportado avi"@pt .
+
+:Camera_7_5_evento a :EventoDeCaptura .
+:Camera_7_5 :temFonte :Camera_7_5_evento .
+:Camera_7_5_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+
+:Camera_7_5_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "1.00"^^xsd:decimal ;
+    rdfs:comment "container_reported=avi, probe_score=100/100 (normalizado 1.00)"@pt .
+:Camera_7_5 :temMetadado :Camera_7_5_container .
+
+:Camera_7_5_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=15/1"@pt .
+:Camera_7_5_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=15/1"@pt .
+:Camera_7_5 :temMetadado :Camera_7_5_rfr, :Camera_7_5_avgfr .
+:Camera_7_5_rfr :correlacionaComEquivalencia :Camera_7_5_avgfr .
+
+:Camera_7_6 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_7_6, formato reportado avi"@pt .
+
+:Camera_7_6_evento a :EventoDeCaptura .
+:Camera_7_6 :temFonte :Camera_7_6_evento .
+:Camera_7_6_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+
+:Camera_7_6_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "1.00"^^xsd:decimal ;
+    rdfs:comment "container_reported=avi, probe_score=100/100 (normalizado 1.00)"@pt .
+:Camera_7_6 :temMetadado :Camera_7_6_container .
+
+:Camera_7_6_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=15/1"@pt .
+:Camera_7_6_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=15/1"@pt .
+:Camera_7_6 :temMetadado :Camera_7_6_rfr, :Camera_7_6_avgfr .
+:Camera_7_6_rfr :correlacionaComEquivalencia :Camera_7_6_avgfr .
+
+:Camera_9_1 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_9_1, formato reportado hevc"@pt .
+
+:Camera_9_1_evento a :EventoDeCaptura .
+:Camera_9_1 :temFonte :Camera_9_1_evento .
+:Camera_9_1_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+
+:Camera_9_1_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "0.51"^^xsd:decimal ;
+    rdfs:comment "container_reported=hevc, probe_score=51/100 (normalizado 0.51)"@pt .
+:Camera_9_1 :temMetadado :Camera_9_1_container .
+
+:Camera_9_1_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=1200000/1"@pt .
+:Camera_9_1_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=25/1"@pt .
+:Camera_9_1 :temMetadado :Camera_9_1_rfr, :Camera_9_1_avgfr .
+:Camera_9_1_rfr :correlacionaComDivergencia :Camera_9_1_avgfr .
+
+:Camera_9_2 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_9_2, formato reportado dhav"@pt .
+
+:Camera_9_2_evento a :EventoDeCaptura .
+:Camera_9_2 :temFonte :Camera_9_2_evento .
+:Camera_9_2_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+
+:Camera_9_2_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "0.01"^^xsd:decimal ;
+    rdfs:comment "container_reported=dhav, probe_score=1/100 (normalizado 0.01)"@pt .
+:Camera_9_2 :temMetadado :Camera_9_2_container .
+
+:Camera_9_2_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=30/1"@pt .
+:Camera_9_2_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=30/1"@pt .
+:Camera_9_2 :temMetadado :Camera_9_2_rfr, :Camera_9_2_avgfr .
+:Camera_9_2_rfr :correlacionaComEquivalencia :Camera_9_2_avgfr .
+
+:Camera_9_3 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_9_3, formato reportado dhav"@pt .
+
+:Camera_9_3_evento a :EventoDeCaptura .
+:Camera_9_3 :temFonte :Camera_9_3_evento .
+:Camera_9_3_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+
+:Camera_9_3_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "0.01"^^xsd:decimal ;
+    rdfs:comment "container_reported=dhav, probe_score=1/100 (normalizado 0.01)"@pt .
+:Camera_9_3 :temMetadado :Camera_9_3_container .
+
+:Camera_9_3_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=30/1"@pt .
+:Camera_9_3_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=30/1"@pt .
+:Camera_9_3 :temMetadado :Camera_9_3_rfr, :Camera_9_3_avgfr .
+:Camera_9_3_rfr :correlacionaComEquivalencia :Camera_9_3_avgfr .
+
+:Camera_9_4 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_9_4, formato reportado dhav"@pt .
+
+:Camera_9_4_evento a :EventoDeCaptura .
+:Camera_9_4 :temFonte :Camera_9_4_evento .
+:Camera_9_4_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+
+:Camera_9_4_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "0.01"^^xsd:decimal ;
+    rdfs:comment "container_reported=dhav, probe_score=1/100 (normalizado 0.01)"@pt .
+:Camera_9_4 :temMetadado :Camera_9_4_container .
+
+:Camera_9_4_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=30/1"@pt .
+:Camera_9_4_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=30/1"@pt .
+:Camera_9_4 :temMetadado :Camera_9_4_rfr, :Camera_9_4_avgfr .
+:Camera_9_4_rfr :correlacionaComEquivalencia :Camera_9_4_avgfr .
+
+:Camera_9_5 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_9_5, formato reportado dhav"@pt .
+
+:Camera_9_5_evento a :EventoDeCaptura .
+:Camera_9_5 :temFonte :Camera_9_5_evento .
+:Camera_9_5_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+
+:Camera_9_5_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "0.01"^^xsd:decimal ;
+    rdfs:comment "container_reported=dhav, probe_score=1/100 (normalizado 0.01)"@pt .
+:Camera_9_5 :temMetadado :Camera_9_5_container .
+
+:Camera_9_5_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=30/1"@pt .
+:Camera_9_5_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=30/1"@pt .
+:Camera_9_5 :temMetadado :Camera_9_5_rfr, :Camera_9_5_avgfr .
+:Camera_9_5_rfr :correlacionaComEquivalencia :Camera_9_5_avgfr .
+
+:Camera_9_6 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_9_6, formato reportado hevc"@pt .
+
+:Camera_9_6_evento a :EventoDeCaptura .
+:Camera_9_6 :temFonte :Camera_9_6_evento .
+:Camera_9_6_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+
+:Camera_9_6_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "0.51"^^xsd:decimal ;
+    rdfs:comment "container_reported=hevc, probe_score=51/100 (normalizado 0.51)"@pt .
+:Camera_9_6 :temMetadado :Camera_9_6_container .
+
+:Camera_9_6_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=1200000/1"@pt .
+:Camera_9_6_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=25/1"@pt .
+:Camera_9_6 :temMetadado :Camera_9_6_rfr, :Camera_9_6_avgfr .
+:Camera_9_6_rfr :correlacionaComDivergencia :Camera_9_6_avgfr .
+
+:Camera_9_7 a :EvidenciaAudiovisual ;
+    rdfs:comment "arquivo Camera_9_7, formato reportado hevc"@pt .
+
+:Camera_9_7_evento a :EventoDeCaptura .
+:Camera_9_7 :temFonte :Camera_9_7_evento .
+:Camera_9_7_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+
+:Camera_9_7_container a :MetadadoTecnico ;
+    :temGrauDeConfianca "0.51"^^xsd:decimal ;
+    rdfs:comment "container_reported=hevc, probe_score=51/100 (normalizado 0.51)"@pt .
+:Camera_9_7 :temMetadado :Camera_9_7_container .
+
+:Camera_9_7_rfr a :MetadadoTecnico ;
+    rdfs:comment "r_frame_rate=1200000/1"@pt .
+:Camera_9_7_avgfr a :MetadadoTecnico ;
+    rdfs:comment "avg_frame_rate=25/1"@pt .
+:Camera_9_7 :temMetadado :Camera_9_7_rfr, :Camera_9_7_avgfr .
+:Camera_9_7_rfr :correlacionaComDivergencia :Camera_9_7_avgfr .
+
+#################################################################
+# Comparações cruzadas de identificação de contêiner entre
+# segmentos da MESMA câmera (Seção 5.1) — evidência direta do
+# padrão de heterogeneidade descrito no artigo: segmentos da
+# câmera 9 ora identificados como fluxo bruto ('hevc'), ora como
+# contêiner proprietário ('dhav'), com scores de confiança muito
+# distintos entre si.
+#################################################################
+
+# Subgrupo 'hevc' (fluxo bruto, probe_score=51/100): ['Camera_9_1', 'Camera_9_6', 'Camera_9_7']
+# Subgrupo 'dhav' (contêiner proprietário, probe_score=1/100): ['Camera_9_2', 'Camera_9_3', 'Camera_9_4', 'Camera_9_5']
+
+:Camera_9_1_container :correlacionaComDivergencia :Camera_9_2_container .
+:Camera_9_1_container :correlacionaComDivergencia :Camera_9_3_container .
+:Camera_9_1_container :correlacionaComDivergencia :Camera_9_4_container .
+:Camera_9_1_container :correlacionaComDivergencia :Camera_9_5_container .
+:Camera_9_6_container :correlacionaComDivergencia :Camera_9_2_container .
+:Camera_9_6_container :correlacionaComDivergencia :Camera_9_3_container .
+:Camera_9_6_container :correlacionaComDivergencia :Camera_9_4_container .
+:Camera_9_6_container :correlacionaComDivergencia :Camera_9_5_container .
+:Camera_9_7_container :correlacionaComDivergencia :Camera_9_2_container .
+:Camera_9_7_container :correlacionaComDivergencia :Camera_9_3_container .
+:Camera_9_7_container :correlacionaComDivergencia :Camera_9_4_container .
+:Camera_9_7_container :correlacionaComDivergencia :Camera_9_5_container .
+
+:Camera_9_1_container :correlacionaComEquivalencia :Camera_9_6_container .
+:Camera_9_1_container :correlacionaComEquivalencia :Camera_9_7_container .
+:Camera_9_6_container :correlacionaComEquivalencia :Camera_9_7_container .
+
+:Camera_9_2_container :correlacionaComEquivalencia :Camera_9_3_container .
+:Camera_9_2_container :correlacionaComEquivalencia :Camera_9_4_container .
+:Camera_9_2_container :correlacionaComEquivalencia :Camera_9_5_container .
+:Camera_9_3_container :correlacionaComEquivalencia :Camera_9_4_container .
+:Camera_9_3_container :correlacionaComEquivalencia :Camera_9_5_container .
+:Camera_9_4_container :correlacionaComEquivalencia :Camera_9_5_container .
+
+#################################################################
+# Comparações de identificação de contêiner no grupo Câmera 4/7
+# (todas identificadas de forma consistente como 'avi',
+# probe_score=100/100) — incluída como contraste de controle:
+# aqui o raciocinador NÃO classificaria nenhum indivíduo em
+# MetadadoDivergente nem em ConfiabilidadeBaixa.
+#################################################################
+
+:Camera_4_container :correlacionaComEquivalencia :Camera_7_1_container .
+:Camera_4_container :correlacionaComEquivalencia :Camera_7_2_container .
+:Camera_4_container :correlacionaComEquivalencia :Camera_7_3_container .
+:Camera_4_container :correlacionaComEquivalencia :Camera_7_4_container .
+:Camera_4_container :correlacionaComEquivalencia :Camera_7_5_container .
+:Camera_4_container :correlacionaComEquivalencia :Camera_7_6_container .
+
+#################################################################
+# Resumo das classificações esperadas de um raciocinador padrão
+# sobre esta ABox (não executado neste repositório — ver aviso no
+# topo do arquivo). Calculado deterministicamente a partir dos
+# valores brutos por scripts/populate_abox.py.
+#################################################################
+
+# ∈ MetadadoDivergente (13 indivíduos):
+#   Camera_9_1_rfr, Camera_9_1_avgfr, Camera_9_6_rfr, Camera_9_6_avgfr,
+#   Camera_9_7_rfr, Camera_9_7_avgfr  [r_frame_rate=1200000/1 vs avg_frame_rate=25/1]
+#   Camera_9_1_container, Camera_9_6_container, Camera_9_7_container,
+#   Camera_9_2_container, Camera_9_3_container, Camera_9_4_container,
+#   Camera_9_5_container  [identificação de contêiner divergente entre
+#   segmentos hevc/dhav da mesma câmera]
+#
+# ∈ ConfiabilidadeBaixa (4 indivíduos):
+#   Camera_9_2_container, Camera_9_3_container, Camera_9_4_container,
+#   Camera_9_5_container  [probe_score normalizado = 0.01, < 0.5]
+#
+# Casos-limite dignos de nota (Seção 6.4 — Limitações): os segmentos
+# Camera_9_1/9_6/9_7 têm probe_score normalizado = 0.51 — logo acima
+# do limiar de 0.5 — e por isso NÃO são classificados em
+# ConfiabilidadeBaixa apesar de representarem identificação de
+# contêiner como fluxo bruto, não como formato nomeado. Isso sugere
+# que o limiar de 0.5 (Seção 6.2), calibrado provisoriamente, pode
+# não capturar todos os casos de baixa confiabilidade observados no
+# corpus real — ponto a considerar na calibração futura mencionada
+# na Seção 6.4.
+#
+# Grupo de controle Câmera 4/7 (7 indivíduos _container, todos
+# probe_score normalizado = 1.00, r_frame_rate = avg_frame_rate em
+# todos os arquivos): nenhuma classificação em MetadadoDivergente ou
+# ConfiabilidadeBaixa — como esperado para fontes sem heterogeneidade.
