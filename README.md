@@ -23,7 +23,7 @@ Este repositório reúne os materiais de apoio à pesquisa, em conformidade com 
 ├── scripts/
 │   ├── extract_metadata.sh       # comando ffprobe utilizado na extração
 │   └── README.md
-├── CITATION.cff
+├── 
 ├── LICENSE            # código: MIT
 └── LICENSE-DATA.md    # dados: CC BY 4.0
 ```
