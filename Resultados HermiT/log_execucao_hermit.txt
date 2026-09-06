@@ -5,7 +5,7 @@ Arquivo analisado: esquema_conceitual.ttl (esquema_conceitual.owl)
 ======================================================================
 
 * Owlready2 * Running HermiT...
-    java -Xmx2000M -cp C:\Users\Aldo\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit;C:\Users\Aldo\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit\HermiT.jar org.semanticweb.HermiT.cli.CommandLine -c -O -D -I file:///C:/Users/Aldo/AppData/Local/Temp/tmp5brzztcx -Y
+    java -Xmx2000M -cp C:\Users\XXXX\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit;C:\Users\XXXX\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit\HermiT.jar org.semanticweb.HermiT.cli.CommandLine -c -O -D -I file:///C:/Users/XXXX/AppData/Local/Temp/tmp5brzztcx -Y
 * Owlready2 * HermiT took 2.2225182056427 seconds
 * Owlready * Reparenting prov.agent: {prov.influencer, owl.ObjectProperty} => {prov.influencer}
 * Owlready * Reparenting prov.activity: {prov.influencer, owl.ObjectProperty} => {prov.influencer}
