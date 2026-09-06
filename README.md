@@ -14,25 +14,34 @@ Este repositório reúne os materiais de apoio à pesquisa, em conformidade com 
 
 ```
 .
-├── data/
-│   ├── data_dictionary.md      # dicionário de dados: descrição de cada campo extraído
-│   └── metadados_exemplo.csv   # amostra ilustrativa da estrutura do corpus (ver aviso abaixo)
-├── ontology/
-│   ├── esquema_conceitual.ttl  # esquema de classes/propriedades/axiomas em OWL (Turtle)
-│   └── README.md                 # escopo e limitações do arquivo OWL
-├── scripts/
-│   ├── extract_metadata.py      # comando ffprobe utilizado na extração
-│   └── README.md
-├── 
-├── LICENSE            # código: MIT
-└── LICENSE-DATA.md    # dados: CC BY 4.0
+├── Arquivos Metadados/            # 14 arquivos JSON com os metadados técnicos extraídos do corpus (Câmeras 4, 7 e 9)
+├── Arquivos Python/               # Scripts de extração, povoamento da ABox e testes de raciocinadores
+├── Resultados HermiT/             # Pacote de validação com HermiT (relatório técnico, tabelas LaTeX/CSV e ontologia inferida)
+├── Resultados Pellet/             # Pacote de validação com Pellet e confronto sistemático HermiT vs. Pellet
+├── esquema_conceitual.ttl         # Esquema ontológico em OWL 2 DL (sintaxe Turtle)
+├── esquema_conceitual.owl         # Esquema ontológico sincronizado em RDF/XML (compatível com Owlready2 e Protégé)
+└── metadados_exemplo.csv          # Amostra ilustrativa da estrutura tabular do corpus
 ```
 
 ## Sobre a pesquisa
 
-O artigo identifica quatro padrões recorrentes de heterogeneidade semântica em metadados técnicos de proveniência audiovisual (divergência de *contêiner*, discrepância entre taxa de quadros nominal e efetiva, redundância de *timestamps* e ausência de convenção de nomenclatura), extraídos via `ffprobe` de um corpus real oriundo de um sistema DVR multi-câmera, e propõe, a partir deles, um esquema conceitual preliminar de classes, propriedades e axiomas em Lógica Descritiva (LD), estruturalmente alinhado ao padrão PROV-O.
+O artigo identifica quatro padrões recorrentes de heterogeneidade semântica em metadados técnicos de proveniência audiovisual (divergência de *contêiner*, discrepância entre taxa de quadros nominal e efetiva, redundância de *timestamps* e ausência de convenção de nomenclatura), extraídos via `ffprobe` de um corpus real oriundo de um sistema DVR multi-câmera, e propõe, a partir deles, um esquema conceitual de classes, propriedades e axiomas em Lógica Descritiva (LD), estruturalmente alinhado ao padrão PROV-O.
 
-**Este é um esquema conceitual preliminar, não implementado nem validado por raciocinador.** O arquivo `.ttl` em `ontology/` é fornecido para transparência e reprodutibilidade da proposta, não como ontologia testada — ver `ontology/README.md` para o escopo exato.
+### Validação por Raciocinadores (HermiT e Pellet)
+
+A proposta conceitual foi **submetida a validação computacional formal** por meio de dois raciocinadores dedutivos independentes com algoritmos distintos:
+* **HermiT** (v1.4.3.456, baseado em *Hypertableau*);
+* **Pellet** (v2.3.1, baseado em *Tableau standard* com suporte a OWLAPIv3).
+
+**Resultados obtidos:**
+1. **Consistência Lógica:** Ambos os raciocinadores atestaram que a ontologia é **100% consistente e satisfatível**.
+2. **Concordância Inter-Reasoner:** Obteve-se **100% de equivalência** entre a predição teórica (Seção 6), as inferências do HermiT e as do Pellet:
+   * 15 indivíduos classificados em `:MetadadoDivergente` (taxas nominais anômalas e divergência de contêineres hevc/dhav);
+   * 5 indivíduos classificados em `:ConfiabilidadeBaixa` (`probe_score` normalizado $< 0.5$);
+   * 0 falso-positivo no grupo de controle (Câmeras 04 e 07);
+   * Validação empírica do caso-limite da Seção 6.4 (`probe_score` = 0.51 não classificado em baixa confiabilidade).
+
+Os relatórios detalhados, logs de execução, tabelas em LaTeX e modelos com triplas inferidas estão disponíveis nas pastas `Resultados HermiT/` e `Resultados Pellet/`.
 
 ## Como citar
 
@@ -41,36 +50,29 @@ A informação bibliográfica para citação será disponibilizada juntamente co
 
 # Licença dos dados e da documentação
 
-O conteúdo das pastas `data/` e `ontology/` (dicionário de dados, amostra de metadados, esquema ontológico e respectivos README) está licenciado sob **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+O conteúdo deste repositório (dicionário de dados, amostra de metadados, esquema ontológico e relatórios) está licenciado sob **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
 
 Texto completo da licença: https://creativecommons.org/licenses/by/4.0/deed.pt_BR
 
-Este material é disponibilizado para fins de pesquisa e reprodutibilidade científica sob a licença **CC BY 4.0**.
+# Scripts e Ferramentas (`Arquivos Python/`)
 
-# Scripts de extração
-
-`extract_metadata.py` documenta o comando `ffprobe` (Seção 4) utilizado para extrair os metadados técnicos de cada arquivo do corpus, em formato JSON, posteriormente consolidado nos campos descritos em `data/data_dictionary.md`.
+* `extract_metadata.py`: Extração automatizada via `ffprobe` em formato JSON.
+* `populate_abox.py`: Povoamento determinístico da ABox a partir dos JSONs.
+* `ler_ttl.py`: Validação sintática do arquivo Turtle e conversão automática para RDF/XML.
+* `test_reasoner.py` / `gerar_resultados_hermit.py`: Execução e exportação dos testes do raciocinador HermiT.
+* `test_pellet.py` / `gerar_resultados_pellet.py`: Execução e exportação dos testes do raciocinador Pellet.
 
 ## Uso
 
-Requer `ffmpeg`/`ffprobe` instalado (https://ffmpeg.org/download.html).
+Requer Python 3.10+ com `owlready2` e `rdflib`, além de Java (JVM 11+) para a execução dos raciocinadores.
 
 # Esquema conceitual (OWL / Turtle)
 
-`esquema_conceitual.ttl` reproduz, em sintaxe Turtle (OWL 2 DL), os axiomas discutidos na Seção 6 do artigo: as sete classes principais (Seção 6.1), as propriedades de objeto e de dado e as duas classes definidas por restrição — `MetadadoDivergente` e `ConfiabilidadeBaixa` (Seção 6.2) —, além do alinhamento a PROV-O (Seção 6.3) e da ABox de exemplo (Seção 6.2.1).
-
-## Escopo e limitações
-
-Conforme a Seção 6.4 do artigo:
-
-- **Não foi submetido a testes de consistência por raciocinador** (HermiT, Pellet, Konclude). As classificações esperadas da ABox de exemplo estão documentadas como comentário no final do arquivo, não como resultado de execução real.
-- **Não constitui ontologia de domínio completa.**
-- A comparação de valores subjacente a `correlacionaComDivergencia` é responsabilidade de um procedimento externo à ontologia (ver `scripts/`), não do raciocinador.
-- O limiar de `0.5` em `ConfiabilidadeBaixa` é provisório (Seção 6.2).
+`esquema_conceitual.ttl` reproduz, em sintaxe Turtle (OWL 2 DL), os axiomas discutidos na Seção 6 do artigo: as sete classes principais (Seção 6.1), as propriedades de objeto e de dado e as duas classes definidas por restrição — `MetadadoDivergente` e `ConfiabilidadeBaixa` (Seção 6.2) —, além do alinhamento a PROV-O (Seção 6.3) e da ABox expandida do corpus real.
 
 ## Como inspecionar
 
-Abra o arquivo no [Protégé](https://protege.stanford.edu/) para visualizar a hierarquia de classes e propriedades. Rodar um raciocinador sobre este arquivo é encorajado como verificação independente, mas qualquer resultado obtido dessa forma **não deve ser citado como validação do artigo atual** — a validação por implementação é indicada, no artigo, como etapa subsequente da pesquisa (Seção 8).
+Abra o arquivo `esquema_conceitual.ttl` ou `esquema_conceitual.owl` diretamente no [Protégé](https://protege.stanford.edu/) para visualizar a hierarquia de classes e propriedades, ou utilize os scripts Python disponibilizados para reproduzir as inferências computacionais via linha de comando.
 
  Dicionário de dados
 

@@ -1,0 +1,653 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/pericia-audiovisual"
+         xmlns="http://example.org/pericia-audiovisual#"
+         xmlns:prov="http://www.w3.org/ns/prov#">
+
+<owl:Ontology rdf:about="http://example.org/pericia-audiovisual">
+  <owl:imports rdf:resource="http://www.w3.org/ns/prov-o"/>
+  <rdfs:label xml:lang="pt">Esquema conceitual — metadados de proveniência audiovisual</rdfs:label>
+  <rdfs:comment xml:lang="pt">Proposta preliminar, não implementada nem validada. Ver Seção 6.4 do artigo.</rdfs:comment>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#correlacionaComDivergencia">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdfs:subPropertyOf rdf:resource="#correlacionaCom"/>
+  <rdfs:comment xml:lang="pt">Asserida por procedimento de pré-processamento externo à ontologia (pipeline de extração), não inferida (Seção 6.2).</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#correlacionaCom">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdfs:domain rdf:resource="#MetadadoTecnico"/>
+  <rdfs:range rdf:resource="#MetadadoTecnico"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#correlacionaComEquivalencia">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdfs:subPropertyOf rdf:resource="#correlacionaCom"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#temDispositivoEnvolvido">
+  <rdfs:domain rdf:resource="#EventoDeCaptura"/>
+  <rdfs:range rdf:resource="#FonteDeCaptura"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#temFonte">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+  <rdfs:domain rdf:resource="#EvidenciaAudiovisual"/>
+  <rdfs:range rdf:resource="#EventoDeCaptura"/>
+  <rdfs:comment xml:lang="pt">Geração técnica do arquivo, mediada por um evento — não atribuição direta de responsabilidade a um agente (Seção 6.3).</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#temMetadado">
+  <rdfs:domain rdf:resource="#EvidenciaAudiovisual"/>
+  <rdfs:range rdf:resource="#MetadadoTecnico"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#temInvalidacao">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasInvalidatedBy"/>
+  <rdfs:domain rdf:resource="#EvidenciaAudiovisual"/>
+  <rdfs:range rdf:resource="#EventoDeInvalidacao"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#temGeracao">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+  <rdfs:domain rdf:resource="#EvidenciaAudiovisual"/>
+  <rdfs:range rdf:resource="#EventoDeGeracao"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#temOperador">
+  <rdfs:domain rdf:resource="#FonteDeCaptura"/>
+  <rdfs:range rdf:resource="#OperadorResponsavel"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#temGrauDeConfianca">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#MetadadoTecnico"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:comment xml:lang="pt">Imagem em xsd:decimal no intervalo [0,0; 1,0].</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#FonteDeCaptura">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+  <rdfs:label xml:lang="pt">Fonte de Captura</rdfs:label>
+  <rdfs:comment xml:lang="pt">Dispositivo ou sistema tecnicamente responsável pela geração original. Modelado como prov:Entity, não como agente (Seção 6.3).</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#MetadadoTecnico">
+  <rdfs:label xml:lang="pt">Metadado Técnico</rdfs:label>
+  <rdfs:comment xml:lang="pt">Atributo técnico extraído de uma evidência, tratado por reificação como indivíduo dotado de identidade própria.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#EventoDeCaptura">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+  <rdfs:label xml:lang="pt">Evento de Captura</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EventoDeCustodia">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+  <rdfs:label xml:lang="pt">Evento de Custódia</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvidenciaAudiovisual">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+  <rdfs:label xml:lang="pt">Evidência Audiovisual</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EventoDeInvalidacao">
+  <rdfs:subClassOf rdf:resource="#EventoDeCustodia"/>
+  <rdfs:label xml:lang="pt">Evento de Invalidação</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfiabilidadeBaixa">
+  <rdfs:subClassOf rdf:resource="#MetadadoTecnico"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#MetadadoTecnico"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#temGrauDeConfianca"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</xsd:maxExclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:label xml:lang="pt">Confiabilidade Baixa</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EventoDeGeracao">
+  <rdfs:subClassOf rdf:resource="#EventoDeCustodia"/>
+  <rdfs:label xml:lang="pt">Evento de Geração</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MetadadoDivergente">
+  <rdfs:subClassOf rdf:resource="#MetadadoTecnico"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#MetadadoTecnico"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#correlacionaComDivergencia"/>
+          <owl:someValuesFrom rdf:resource="#MetadadoTecnico"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:label xml:lang="pt">Metadado Divergente</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OperadorResponsavel">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+  <rdfs:label xml:lang="pt">Operador Responsável</rdfs:label>
+  <rdfs:comment xml:lang="pt">Pessoa física ou organização responsável pela operação de uma FonteDeCaptura.</rdfs:comment>
+</owl:Class>
+
+<MetadadoTecnico rdf:about="#Camera_7_5_container">
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_1_container">
+  <correlacionaComDivergencia rdf:resource="#Camera_9_2_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_3_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_4_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_5_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_6_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_7_container"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.51</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=hevc, probe_score=51/100 (normalizado 0.51)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_2_container">
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_3_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_4_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_5_container"/>
+  <rdf:type rdf:resource="#ConfiabilidadeBaixa"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=dhav, probe_score=1/100 (normalizado 0.01)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_3_container">
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_4_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_5_container"/>
+  <rdf:type rdf:resource="#ConfiabilidadeBaixa"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=dhav, probe_score=1/100 (normalizado 0.01)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_4_container">
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_5_container"/>
+  <rdf:type rdf:resource="#ConfiabilidadeBaixa"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=dhav, probe_score=1/100 (normalizado 0.01)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_5_container">
+  <rdf:type rdf:resource="#ConfiabilidadeBaixa"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=dhav, probe_score=1/100 (normalizado 0.01)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_6_container">
+  <correlacionaComDivergencia rdf:resource="#Camera_9_2_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_3_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_4_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_5_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_7_container"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.51</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=hevc, probe_score=51/100 (normalizado 0.51)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_7_container">
+  <correlacionaComDivergencia rdf:resource="#Camera_9_2_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_3_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_4_container"/>
+  <correlacionaComDivergencia rdf:resource="#Camera_9_5_container"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.51</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=hevc, probe_score=51/100 (normalizado 0.51)</rdfs:comment>
+</MetadadoTecnico>
+
+<EventoDeCaptura rdf:about="#Camera_9_2_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_9"/>
+  <prov:generated rdf:resource="#Camera_9_2"/>
+</EventoDeCaptura>
+
+<FonteDeCaptura rdf:about="#FonteDeCaptura_Camera_9">
+  <rdfs:comment xml:lang="pt">Câmera/canal DVR — grupo Camera_9</rdfs:comment>
+</FonteDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_7_3_container">
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_4_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_4_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=30/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_4_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=30/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_9_5">
+  <temFonte rdf:resource="#Camera_9_5_evento"/>
+  <temMetadado rdf:resource="#Camera_9_5_container"/>
+  <temMetadado rdf:resource="#Camera_9_5_rfr"/>
+  <temMetadado rdf:resource="#Camera_9_5_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_9_5, formato reportado dhav</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_9_5_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_9"/>
+  <prov:generated rdf:resource="#Camera_9_5"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_9_5_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_5_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=30/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_5_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=30/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_9_2">
+  <temFonte rdf:resource="#Camera_9_2_evento"/>
+  <temMetadado rdf:resource="#Camera_9_2_container"/>
+  <temMetadado rdf:resource="#Camera_9_2_rfr"/>
+  <temMetadado rdf:resource="#Camera_9_2_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_9_2, formato reportado dhav</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<MetadadoTecnico rdf:about="#Camera_9_2_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_2_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=30/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_2_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=30/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_4">
+  <temFonte rdf:resource="#Camera_4_evento"/>
+  <temMetadado rdf:resource="#Camera_4_container"/>
+  <temMetadado rdf:resource="#Camera_4_rfr"/>
+  <temMetadado rdf:resource="#Camera_4_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_4, formato reportado avi</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_4_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_4"/>
+  <prov:generated rdf:resource="#Camera_4"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_4_container">
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_1_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_2_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_3_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_4_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_5_container"/>
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_6_container"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_4_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_4_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_4_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_9_1">
+  <temFonte rdf:resource="#Camera_9_1_evento"/>
+  <temMetadado rdf:resource="#Camera_9_1_container"/>
+  <temMetadado rdf:resource="#Camera_9_1_rfr"/>
+  <temMetadado rdf:resource="#Camera_9_1_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_9_1, formato reportado hevc</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_9_1_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_9"/>
+  <prov:generated rdf:resource="#Camera_9_1"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_9_1_rfr">
+  <correlacionaComDivergencia rdf:resource="#Camera_9_1_avgfr"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=1200000/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_1_avgfr">
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <rdfs:comment xml:lang="pt">avg_frame_rate=25/1</rdfs:comment>
+</MetadadoTecnico>
+
+<FonteDeCaptura rdf:about="#FonteDeCaptura_Camera_4">
+  <rdfs:comment xml:lang="pt">Câmera/canal DVR — grupo Camera_4</rdfs:comment>
+</FonteDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_7_1_container">
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_7_1">
+  <temFonte rdf:resource="#Camera_7_1_evento"/>
+  <temMetadado rdf:resource="#Camera_7_1_container"/>
+  <temMetadado rdf:resource="#Camera_7_1_rfr"/>
+  <temMetadado rdf:resource="#Camera_7_1_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_7_1, formato reportado avi</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_7_1_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_7"/>
+  <prov:generated rdf:resource="#Camera_7_1"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_7_1_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_1_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_1_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_7_3">
+  <temFonte rdf:resource="#Camera_7_3_evento"/>
+  <temMetadado rdf:resource="#Camera_7_3_container"/>
+  <temMetadado rdf:resource="#Camera_7_3_rfr"/>
+  <temMetadado rdf:resource="#Camera_7_3_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_7_3, formato reportado avi</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_7_3_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_7"/>
+  <prov:generated rdf:resource="#Camera_7_3"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_7_3_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_3_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_3_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_6_avgfr">
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <rdfs:comment xml:lang="pt">avg_frame_rate=25/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_9_7">
+  <temFonte rdf:resource="#Camera_9_7_evento"/>
+  <temMetadado rdf:resource="#Camera_9_7_container"/>
+  <temMetadado rdf:resource="#Camera_9_7_rfr"/>
+  <temMetadado rdf:resource="#Camera_9_7_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_9_7, formato reportado hevc</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_9_7_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_9"/>
+  <prov:generated rdf:resource="#Camera_9_7"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_9_7_rfr">
+  <correlacionaComDivergencia rdf:resource="#Camera_9_7_avgfr"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=1200000/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_7_avgfr">
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <rdfs:comment xml:lang="pt">avg_frame_rate=25/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EventoDeCaptura rdf:about="#Camera_7_6_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_7"/>
+  <prov:generated rdf:resource="#Camera_7_6"/>
+</EventoDeCaptura>
+
+<FonteDeCaptura rdf:about="#FonteDeCaptura_Camera_7">
+  <rdfs:comment xml:lang="pt">Câmera/canal DVR — grupo Camera_7</rdfs:comment>
+</FonteDeCaptura>
+
+<EvidenciaAudiovisual rdf:about="#Camera_7_5">
+  <temFonte rdf:resource="#Camera_7_5_evento"/>
+  <temMetadado rdf:resource="#Camera_7_5_container"/>
+  <temMetadado rdf:resource="#Camera_7_5_rfr"/>
+  <temMetadado rdf:resource="#Camera_7_5_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_7_5, formato reportado avi</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_7_5_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_7"/>
+  <prov:generated rdf:resource="#Camera_7_5"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_7_5_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_5_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_5_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<FonteDeCaptura rdf:about="#fc1">
+  <rdfs:comment xml:lang="pt">DVR, canal 2</rdfs:comment>
+</FonteDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_7_2_container">
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_4_container">
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_6_container">
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_2_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_2_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_2_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_7_6">
+  <temFonte rdf:resource="#Camera_7_6_evento"/>
+  <temMetadado rdf:resource="#Camera_7_6_container"/>
+  <temMetadado rdf:resource="#Camera_7_6_rfr"/>
+  <temMetadado rdf:resource="#Camera_7_6_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_7_6, formato reportado avi</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<MetadadoTecnico rdf:about="#Camera_7_6_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_6_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_6_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_9_3">
+  <temFonte rdf:resource="#Camera_9_3_evento"/>
+  <temMetadado rdf:resource="#Camera_9_3_container"/>
+  <temMetadado rdf:resource="#Camera_9_3_rfr"/>
+  <temMetadado rdf:resource="#Camera_9_3_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_9_3, formato reportado dhav</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_9_3_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_9"/>
+  <prov:generated rdf:resource="#Camera_9_3"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_9_3_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_9_3_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=30/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_9_3_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=30/1</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_9_4">
+  <temFonte rdf:resource="#Camera_9_4_evento"/>
+  <temMetadado rdf:resource="#Camera_9_4_container"/>
+  <temMetadado rdf:resource="#Camera_9_4_rfr"/>
+  <temMetadado rdf:resource="#Camera_9_4_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_9_4, formato reportado dhav</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_9_4_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_9"/>
+  <prov:generated rdf:resource="#Camera_9_4"/>
+</EventoDeCaptura>
+
+<EvidenciaAudiovisual rdf:about="#Camera_9_6">
+  <temFonte rdf:resource="#Camera_9_6_evento"/>
+  <temMetadado rdf:resource="#Camera_9_6_container"/>
+  <temMetadado rdf:resource="#Camera_9_6_rfr"/>
+  <temMetadado rdf:resource="#Camera_9_6_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_9_6, formato reportado hevc</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_9_6_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_9"/>
+  <prov:generated rdf:resource="#Camera_9_6"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_9_6_rfr">
+  <correlacionaComDivergencia rdf:resource="#Camera_9_6_avgfr"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=1200000/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#m1">
+  <correlacionaComDivergencia rdf:resource="#m2"/>
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate, câmera 1, evidência e1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#m2">
+  <rdf:type rdf:resource="#MetadadoDivergente"/>
+  <rdfs:comment xml:lang="pt">avg_frame_rate, câmera 1, evidência e1</rdfs:comment>
+</MetadadoTecnico>
+
+<EventoDeCaptura rdf:about="#ec1">
+  <temDispositivoEnvolvido rdf:resource="#fc1"/>
+  <prov:generated rdf:resource="#e2"/>
+</EventoDeCaptura>
+
+<EvidenciaAudiovisual rdf:about="#Camera_7_4">
+  <temFonte rdf:resource="#Camera_7_4_evento"/>
+  <temMetadado rdf:resource="#Camera_7_4_container"/>
+  <temMetadado rdf:resource="#Camera_7_4_rfr"/>
+  <temMetadado rdf:resource="#Camera_7_4_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_7_4, formato reportado avi</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_7_4_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_7"/>
+  <prov:generated rdf:resource="#Camera_7_4"/>
+</EventoDeCaptura>
+
+<MetadadoTecnico rdf:about="#Camera_7_4_rfr">
+  <correlacionaComEquivalencia rdf:resource="#Camera_7_4_avgfr"/>
+  <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#Camera_7_4_avgfr">
+  <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+</MetadadoTecnico>
+
+<MetadadoTecnico rdf:about="#m3">
+  <rdf:type rdf:resource="#ConfiabilidadeBaixa"/>
+  <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.31</temGrauDeConfianca>
+  <rdfs:comment xml:lang="pt">contêiner, câmera 2, evidência e2</rdfs:comment>
+</MetadadoTecnico>
+
+<EvidenciaAudiovisual rdf:about="#Camera_7_2">
+  <temFonte rdf:resource="#Camera_7_2_evento"/>
+  <temMetadado rdf:resource="#Camera_7_2_container"/>
+  <temMetadado rdf:resource="#Camera_7_2_rfr"/>
+  <temMetadado rdf:resource="#Camera_7_2_avgfr"/>
+  <rdfs:comment xml:lang="pt">arquivo Camera_7_2, formato reportado avi</rdfs:comment>
+</EvidenciaAudiovisual>
+
+<EventoDeCaptura rdf:about="#Camera_7_2_evento">
+  <temDispositivoEnvolvido rdf:resource="#FonteDeCaptura_Camera_7"/>
+  <prov:generated rdf:resource="#Camera_7_2"/>
+</EventoDeCaptura>
+
+<prov:Entity rdf:about="http://www.w3.org/ns/prov-o"/>
+
+<EvidenciaAudiovisual rdf:about="#e2">
+  <temFonte rdf:resource="#ec1"/>
+</EvidenciaAudiovisual>
+
+<prov:Entity rdf:about="http://www.w3.org/ns/prov-o#"/>
+
+<prov:Entity rdf:about="http://www.w3.org/ns/prov-o-20130312">
+  <prov:influenced rdf:resource="http://www.w3.org/ns/prov-o#"/>
+</prov:Entity>
+
+<prov:Collection rdf:about="http://www.w3.org/ns/prov#EmptyCollection">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</prov:Collection>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#EventoDeGeracao"/>
+    <rdf:Description rdf:about="#EventoDeInvalidacao"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointProperties>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#correlacionaComDivergencia"/>
+    <rdf:Description rdf:about="#correlacionaComEquivalencia"/>
+  </owl:members>
+</owl:AllDisjointProperties>
+
+
+</rdf:RDF>

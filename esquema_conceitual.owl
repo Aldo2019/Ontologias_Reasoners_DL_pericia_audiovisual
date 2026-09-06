@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns="http://example.org/pericia-audiovisual#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_1_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#m2">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate, câmera 1, evidência e1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_6">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_7_6, formato reportado avi</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_7_6_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_6_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_6_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_6_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_4_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.00</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_1_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_2_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_3_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_4_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_5_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_6_container"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_1">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_9_1, formato reportado hevc</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_9_1_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_1_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_1_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_1_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_5">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_7_5, formato reportado avi</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_7_5_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_5_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_5_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_5_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_6_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.51</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=hevc, probe_score=51/100 (normalizado 0.51)</rdfs:comment>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_2_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_7_container"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_7">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura"/>
+    <rdfs:comment xml:lang="pt">Câmera/canal DVR — grupo Camera_7</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_2_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.00</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_4_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=30/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_5_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=30/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_4">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura"/>
+    <rdfs:comment xml:lang="pt">Câmera/canal DVR — grupo Camera_4</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_2_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_5">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_9_5, formato reportado dhav</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#m1">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate, câmera 1, evidência e1</rdfs:comment>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#m2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pericia-audiovisual#temGrauDeConfianca"/>
+    <owl:someValuesFrom rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab13"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#temFonte">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+    <rdfs:domain rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:range rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <rdfs:comment xml:lang="pt">Geração técnica do arquivo, mediada por um evento — não atribuição direta de responsabilidade a um agente (Seção 6.3).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_2">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_9_2, formato reportado dhav</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_9_2_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_2_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_2_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_2_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#ConfiabilidadeBaixa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <owl:equivalentClass rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab11"/>
+    <rdfs:label xml:lang="pt">Confiabilidade Baixa</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura"/>
+    <rdfs:comment xml:lang="pt">Câmera/canal DVR — grupo Camera_9</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_5_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="pt">Esquema conceitual — metadados de proveniência audiovisual</rdfs:label>
+    <rdfs:comment xml:lang="pt">Proposta preliminar, não implementada nem validada. Ver Seção 6.4 do artigo.</rdfs:comment>
+    <owl:imports rdf:resource="http://www.w3.org/ns/prov-o"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_3_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#correlacionaCom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:range rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_2_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_7">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_9_7, formato reportado hevc</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_9_7_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_7_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_7_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_7_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_3">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_9_3, formato reportado dhav</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_4_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_4"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_1_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=25/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#temInvalidacao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasInvalidatedBy"/>
+    <rdfs:domain rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:range rdf:resource="http://example.org/pericia-audiovisual#EventoDeInvalidacao"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_3_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_4">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_7_4, formato reportado avi</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_7_4_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_4_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_4_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_4_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_2">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_7_2, formato reportado avi</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_7_2_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_2_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_2_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_2_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_4_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_4_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_4_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_3_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=30/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab15">
+    <rdf:first rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab14"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_4">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_9_4, formato reportado dhav</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#MetadadoDivergente">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <owl:equivalentClass rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab7"/>
+    <rdfs:label xml:lang="pt">Metadado Divergente</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_5_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://example.org/pericia-audiovisual#correlacionaComDivergencia"/>
+    <owl:someValuesFrom rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_7_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=1200000/1</rdfs:comment>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_7_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#EventoDeCustodia">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+    <rdfs:label xml:lang="pt">Evento de Custódia</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#EventoDeCaptura">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+    <rdfs:label xml:lang="pt">Evento de Captura</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_3_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.00</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_6_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.00</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_4">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_4, formato reportado avi</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_4_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_4_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_4_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_4_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_6">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_9_6, formato reportado hevc</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_9_6_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_6_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_6_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_9_6_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_7_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=25/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
+    <owl:members rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab2">
+    <rdf:first rdf:resource="http://example.org/pericia-audiovisual#EventoDeGeracao"/>
+    <rdf:rest rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#FonteDeCaptura">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:label xml:lang="pt">Fonte de Captura</rdfs:label>
+    <rdfs:comment xml:lang="pt">Dispositivo ou sistema tecnicamente responsável pela geração original. Modelado como prov:Entity, não como agente (Seção 6.3).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_1_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=1200000/1</rdfs:comment>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_1_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#fc1">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura"/>
+    <rdfs:comment xml:lang="pt">DVR, canal 2</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_1_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_1_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_4_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_4_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_6_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=25/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#temDispositivoEnvolvido">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <rdfs:range rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_4_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=dhav, probe_score=1/100 (normalizado 0.01)</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_container"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_1_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.00</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#EventoDeInvalidacao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pericia-audiovisual#EventoDeCustodia"/>
+    <rdfs:label xml:lang="pt">Evento de Invalidação</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#correlacionaComDivergencia">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://example.org/pericia-audiovisual#correlacionaCom"/>
+    <rdfs:comment xml:lang="pt">Asserida por procedimento de pré-processamento externo à ontologia (pipeline de extração), não inferida (Seção 6.2).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#OperadorResponsavel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+    <rdfs:label xml:lang="pt">Operador Responsável</rdfs:label>
+    <rdfs:comment xml:lang="pt">Pessoa física ou organização responsável pela operação de uma FonteDeCaptura.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#temMetadado">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:range rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_1_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.51</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=hevc, probe_score=51/100 (normalizado 0.51)</rdfs:comment>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_2_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_6_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_7_container"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab16">
+    <rdf:first rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdf:rest rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab17"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_3">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_7_3, formato reportado avi</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_7_3_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_3_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_3_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_3_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_2_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=dhav, probe_score=1/100 (normalizado 0.01)</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_container"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_3_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=dhav, probe_score=1/100 (normalizado 0.01)</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_container"/>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_container"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_5_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=30/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#EventoDeGeracao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/pericia-audiovisual#EventoDeCustodia"/>
+    <rdfs:label xml:lang="pt">Evento de Geração</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab6">
+    <rdf:first rdf:resource="http://example.org/pericia-audiovisual#correlacionaComEquivalencia"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_6_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_6_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_5_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.00</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_7_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.51</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=hevc, probe_score=51/100 (normalizado 0.51)</rdfs:comment>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_2_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_3_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_4_container"/>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_5_container"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_3_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_3_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_5_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=dhav, probe_score=1/100 (normalizado 0.01)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_6_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_2_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=30/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_2_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_6_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=1200000/1</rdfs:comment>
+    <correlacionaComDivergencia rdf:resource="http://example.org/pericia-audiovisual#Camera_9_6_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab10">
+    <rdf:first rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab8"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_2_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab5">
+    <rdf:first rdf:resource="http://example.org/pericia-audiovisual#correlacionaComDivergencia"/>
+    <rdf:rest rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_3_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=30/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#correlacionaComEquivalencia">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://example.org/pericia-audiovisual#correlacionaCom"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#temGeracao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasGeneratedBy"/>
+    <rdfs:domain rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:range rdf:resource="http://example.org/pericia-audiovisual#EventoDeGeracao"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_1_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#temGrauDeConfianca">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:comment xml:lang="pt">Imagem em xsd:decimal no intervalo [0,0; 1,0].</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_2_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_2_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_1_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_4_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_4_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=30/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_5_rfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">r_frame_rate=15/1</rdfs:comment>
+    <correlacionaComEquivalencia rdf:resource="http://example.org/pericia-audiovisual#Camera_7_5_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_6_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab13">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <owl:withRestrictions rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab15"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_5_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_4_container">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.00</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">container_reported=avi, probe_score=100/100 (normalizado 1.00)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_2_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=30/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#e2">
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#ec1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#ec1">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#fc1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_7_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#MetadadoTecnico">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">Metadado Técnico</rdfs:label>
+    <rdfs:comment xml:lang="pt">Atributo técnico extraído de uma evidência, tratado por reificação como indivíduo dotado de identidade própria.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_3_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#m3">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <temGrauDeConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.31</temGrauDeConfianca>
+    <rdfs:comment xml:lang="pt">contêiner, câmera 2, evidência e2</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_1">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EvidenciaAudiovisual"/>
+    <rdfs:comment xml:lang="pt">arquivo Camera_7_1, formato reportado avi</rdfs:comment>
+    <temFonte rdf:resource="http://example.org/pericia-audiovisual#Camera_7_1_evento"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_1_container"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_1_rfr"/>
+    <temMetadado rdf:resource="http://example.org/pericia-audiovisual#Camera_7_1_avgfr"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab14">
+    <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</xsd:maxExclusive>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#temOperador">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura"/>
+    <rdfs:range rdf:resource="http://example.org/pericia-audiovisual#OperadorResponsavel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#EvidenciaAudiovisual">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:label xml:lang="pt">Evidência Audiovisual</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab3">
+    <rdf:first rdf:resource="http://example.org/pericia-audiovisual#EventoDeInvalidacao"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab16"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_7_4_avgfr">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdfs:comment xml:lang="pt">avg_frame_rate=15/1</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab9">
+    <rdf:first rdf:resource="http://example.org/pericia-audiovisual#MetadadoTecnico"/>
+    <rdf:rest rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab10"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_4_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/pericia-audiovisual#Camera_9_6_evento">
+    <rdf:type rdf:resource="http://example.org/pericia-audiovisual#EventoDeCaptura"/>
+    <temDispositivoEnvolvido rdf:resource="http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab17">
+    <rdf:first rdf:nodeID="nfe902d107428404fa39c1142c8e2a1aab12"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+</rdf:RDF>

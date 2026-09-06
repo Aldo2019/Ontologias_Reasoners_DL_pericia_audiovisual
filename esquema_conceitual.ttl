@@ -63,9 +63,8 @@
     rdfs:subClassOf :EventoDeCustodia ;
     rdfs:label "Evento de Invalidação"@pt .
 
-owl:AllDisjointClasses [
-    owl:members ( :EventoDeGeracao :EventoDeInvalidacao )
-] .
+[] a owl:AllDisjointClasses ;
+    owl:members ( :EventoDeGeracao :EventoDeInvalidacao ) .
 
 #################################################################
 # Propriedades de objeto (Seção 6.2, 6.3)

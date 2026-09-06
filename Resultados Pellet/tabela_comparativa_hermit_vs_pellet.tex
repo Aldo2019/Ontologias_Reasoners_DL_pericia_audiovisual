@@ -1,0 +1,33 @@
+% Tabela Comparativa Sistemática: HermiT vs. Pellet (OWL 2 DL)
+% Pronta para inclusão na Seção 6 (Validação por Raciocinadores) do artigo
+\begin{table*}[t]
+\centering
+\small
+\caption{Confronto Comparativo entre Predição Teórica e Raciocinadores DL (HermiT e Pellet)}
+\label{tab:comparativo-hermit-pellet}
+\begin{tabular}{llllcccccc}
+\hline
+\textbf{Indivíduo} & \textbf{Fonte} & \textbf{Tipo} & \textbf{Valor} & \multicolumn{3}{c}{\textbf{MetadadoDivergente}} & \multicolumn{3}{c}{\textbf{ConfiabilidadeBaixa}} \\
+ & & & & \textbf{Teo.} & \textbf{HermiT} & \textbf{Pellet} & \textbf{Teo.} & \textbf{HermiT} & \textbf{Pellet} \\
+\hline
+Camera\_4\_container & Camera\_4 & container & avi (score 1.00) & Não & Não & Não & Não & Não & Não \\
+Camera\_4\_rfr & Camera\_4 & r\_frame\_rate & 15/1 & Não & Não & Não & Não & Não & Não \\
+Camera\_7\_1\_container & Camera\_7 & container & avi (score 1.00) & Não & Não & Não & Não & Não & Não \\
+Camera\_7\_1\_rfr & Camera\_7 & r\_frame\_rate & 15/1 & Não & Não & Não & Não & Não & Não \\
+Camera\_9\_1\_avgfr & Camera\_9 & avg\_frame\_rate & 25/1 & Sim & Sim & Sim & Não & Não & Não \\
+Camera\_9\_1\_container & Camera\_9 & container & hevc (score 0.51) & Sim & Sim & Sim & Não & Não & Não \\
+Camera\_9\_1\_rfr & Camera\_9 & r\_frame\_rate & 1200000/1 & Sim & Sim & Sim & Não & Não & Não \\
+Camera\_9\_2\_container & Camera\_9 & container & dhav (score 0.01) & Sim & Sim & Sim & Sim & Sim & Sim \\
+Camera\_9\_2\_rfr & Camera\_9 & r\_frame\_rate & 30/1 & Não & Não & Não & Não & Não & Não \\
+Camera\_9\_3\_container & Camera\_9 & container & dhav (score 0.01) & Sim & Sim & Sim & Sim & Sim & Sim \\
+Camera\_9\_6\_container & Camera\_9 & container & hevc (score 0.51) & Sim & Sim & Sim & Não & Não & Não \\
+Camera\_9\_6\_rfr & Camera\_9 & r\_frame\_rate & 1200000/1 & Sim & Sim & Sim & Não & Não & Não \\
+m1 & cam01 & r\_frame\_rate (amostra) & 15/1 & Sim & Sim & Sim & Não & Não & Não \\
+m2 & cam01 & avg\_frame\_rate (amostra) & 30/1 & Sim & Sim & Sim & Não & Não & Não \\
+m3 & cam02 & container (amostra) & avi (score 0.31) & Não & Não & Não & Sim & Sim & Sim \\
+\hline
+\multicolumn{10}{l}{\footnotesize Concordância entre HermiT e Pellet: 100\% de equivalência nas classificações sobre todas as 45 instâncias.} \\
+\multicolumn{10}{l}{\footnotesize Ambos os raciocinadores atestaram a ontologia como consistente e satisfatível.} \\
+\hline
+\end{tabular}
+\end{table*}

@@ -1,0 +1,79 @@
+LOG DE EXECUÇÃO DO RACIOCINADOR PELLET (OWL 2 DL)
+Data/Hora: 2026-09-06 18:01:23
+Arquivo analisado: esquema_conceitual.ttl (esquema_conceitual.owl)
+Loader: OWLAPIv3
+======================================================================
+
+--- 1. TESTE DE CONSISTÊNCIA (Duração: 1.50s) ---
+Comando: pellet consistency --loader OWLAPIv3 --ignore-imports
+Consistent: Yes
+
+--- 2. CLASSIFICAÇÃO DA HIERARQUIA TBOX (Duração: 1.45s) ---
+Comando: pellet classify --loader OWLAPIv3 --ignore-imports
+http://www.w3.org/2002/07/owl#Thing
+    http://example.org/pericia-audiovisual#MetadadoTecnico
+       http://example.org/pericia-audiovisual#ConfiabilidadeBaixa
+       http://example.org/pericia-audiovisual#MetadadoDivergente
+    http://www.w3.org/ns/prov#Activity
+       http://example.org/pericia-audiovisual#EventoDeCaptura
+       http://example.org/pericia-audiovisual#EventoDeCustodia
+          http://example.org/pericia-audiovisual#EventoDeGeracao
+          http://example.org/pericia-audiovisual#EventoDeInvalidacao
+    http://www.w3.org/ns/prov#Agent
+       http://example.org/pericia-audiovisual#OperadorResponsavel
+    http://www.w3.org/ns/prov#Entity
+       http://example.org/pericia-audiovisual#EvidenciaAudiovisual
+       http://example.org/pericia-audiovisual#FonteDeCaptura
+
+--- 3. REALIZAÇÃO DAS INSTÂNCIAS ABOX (Duração: 1.47s) ---
+Comando: pellet realize --loader OWLAPIv3 --ignore-imports
+STDERR:
+Classifying 15 elements
+
+Classifying:  6% complete in 00:00
+Classifying:  13% complete in 00:00
+Classifying:  20% complete in 00:00
+Classifying:  26% complete in 00:00
+Classifying:  33% complete in 00:00
+Classifying:  40% complete in 00:00
+Classifying:  46% complete in 00:00
+Classifying:  53% complete in 00:00
+Classifying:  60% complete in 00:00
+Classifying:  66% complete in 00:00
+Classifying:  73% complete in 00:00
+Classifying:  80% complete in 00:00
+Classifying:  86% complete in 00:00
+Classifying:  93% complete in 00:00
+Classifying:  100% complete in 00:00
+Classifying finished in 00:00
+Realizing 15 elements
+
+Realizing:  6% complete in 00:00
+Realizing:  13% complete in 00:00
+Realizing:  20% complete in 00:00
+Realizing:  26% complete in 00:00
+Realizing:  33% complete in 00:00
+Realizing:  40% complete in 00:00
+Realizing:  46% complete in 00:00
+Realizing:  53% complete in 00:00
+Realizing:  60% complete in 00:00
+Realizing:  66% complete in 00:00
+Realizing:  73% complete in 00:00
+Realizing:  100% complete in 00:00
+Realizing finished in 00:00
+
+STDOUT:
+http://www.w3.org/2002/07/owl#Thing
+    http://example.org/pericia-audiovisual#MetadadoTecnico - (http://example.org/pericia-audiovisual#Camera_4_avgfr, http://example.org/pericia-audiovisual#Camera_7_2_container, http://example.org/pericia-audiovisual#Camera_9_2_rfr, http://example.org/pericia-audiovisual#Camera_7_4_avgfr, http://example.org/pericia-audiovisual#Camera_7_6_container, http://example.org/pericia-audiovisual#Camera_7_2_avgfr, http://example.org/pericia-audiovisual#Camera_9_3_rfr, http://example.org/pericia-audiovisual#Camera_4_rfr, http://example.org/pericia-audiovisual#Camera_9_2_avgfr, http://example.org/pericia-audiovisual#Camera_7_6_avgfr, http://example.org/pericia-audiovisual#Camera_9_3_avgfr, http://example.org/pericia-audiovisual#Camera_9_5_avgfr, http://example.org/pericia-audiovisual#Camera_9_4_rfr, http://example.org/pericia-audiovisual#Camera_7_5_rfr, http://example.org/pericia-audiovisual#Camera_7_1_container, http://example.org/pericia-audiovisual#Camera_7_5_container, http://example.org/pericia-audiovisual#Camera_7_3_container, http://example.org/pericia-audiovisual#Camera_7_4_container, http://example.org/pericia-audiovisual#Camera_7_4_rfr, http://example.org/pericia-audiovisual#Camera_7_3_rfr, http://example.org/pericia-audiovisual#Camera_9_5_rfr, http://example.org/pericia-audiovisual#Camera_7_3_avgfr, http://example.org/pericia-audiovisual#Camera_7_6_rfr, http://example.org/pericia-audiovisual#Camera_7_2_rfr, http://example.org/pericia-audiovisual#Camera_7_1_avgfr, http://example.org/pericia-audiovisual#Camera_7_5_avgfr, http://example.org/pericia-audiovisual#Camera_7_1_rfr, http://example.org/pericia-audiovisual#Camera_9_4_avgfr, http://example.org/pericia-audiovisual#Camera_4_container)
+       http://example.org/pericia-audiovisual#ConfiabilidadeBaixa - (http://example.org/pericia-audiovisual#Camera_9_5_container, http://example.org/pericia-audiovisual#Camera_9_4_container, http://example.org/pericia-audiovisual#m3, http://example.org/pericia-audiovisual#Camera_9_3_container, http://example.org/pericia-audiovisual#Camera_9_2_container)
+       http://example.org/pericia-audiovisual#MetadadoDivergente - (http://example.org/pericia-audiovisual#Camera_9_5_container, http://example.org/pericia-audiovisual#Camera_9_7_container, http://example.org/pericia-audiovisual#Camera_9_6_rfr, http://example.org/pericia-audiovisual#m2, http://example.org/pericia-audiovisual#Camera_9_7_rfr, http://example.org/pericia-audiovisual#Camera_9_1_avgfr, http://example.org/pericia-audiovisual#Camera_9_6_container, http://example.org/pericia-audiovisual#m1, http://example.org/pericia-audiovisual#Camera_9_4_container, http://example.org/pericia-audiovisual#Camera_9_1_rfr, http://example.org/pericia-audiovisual#Camera_9_7_avgfr, http://example.org/pericia-audiovisual#Camera_9_1_container, http://example.org/pericia-audiovisual#Camera_9_6_avgfr, http://example.org/pericia-audiovisual#Camera_9_3_container, http://example.org/pericia-audiovisual#Camera_9_2_container)
+    http://www.w3.org/ns/prov#Activity
+       http://example.org/pericia-audiovisual#EventoDeCaptura - (http://example.org/pericia-audiovisual#Camera_9_4_evento, http://example.org/pericia-audiovisual#Camera_7_3_evento, http://example.org/pericia-audiovisual#Camera_9_5_evento, http://example.org/pericia-audiovisual#Camera_7_4_evento, http://example.org/pericia-audiovisual#ec1, http://example.org/pericia-audiovisual#Camera_7_5_evento, http://example.org/pericia-audiovisual#Camera_9_1_evento, http://example.org/pericia-audiovisual#Camera_9_7_evento, http://example.org/pericia-audiovisual#Camera_9_2_evento, http://example.org/pericia-audiovisual#Camera_7_1_evento, http://example.org/pericia-audiovisual#Camera_9_6_evento, http://example.org/pericia-audiovisual#Camera_7_2_evento, http://example.org/pericia-audiovisual#Camera_7_6_evento, http://example.org/pericia-audiovisual#Camera_4_evento, http://example.org/pericia-audiovisual#Camera_9_3_evento)
+       http://example.org/pericia-audiovisual#EventoDeCustodia
+          http://example.org/pericia-audiovisual#EventoDeGeracao
+          http://example.org/pericia-audiovisual#EventoDeInvalidacao
+    http://www.w3.org/ns/prov#Agent
+       http://example.org/pericia-audiovisual#OperadorResponsavel
+    http://www.w3.org/ns/prov#Entity
+       http://example.org/pericia-audiovisual#EvidenciaAudiovisual - (http://example.org/pericia-audiovisual#Camera_9_5, http://example.org/pericia-audiovisual#Camera_9_3, http://example.org/pericia-audiovisual#e2, http://example.org/pericia-audiovisual#Camera_9_7, http://example.org/pericia-audiovisual#Camera_7_4, http://example.org/pericia-audiovisual#Camera_7_1, http://example.org/pericia-audiovisual#Camera_9_2, http://example.org/pericia-audiovisual#Camera_4, http://example.org/pericia-audiovisual#Camera_7_5, http://example.org/pericia-audiovisual#Camera_7_2, http://example.org/pericia-audiovisual#Camera_9_4, http://example.org/pericia-audiovisual#Camera_7_3, http://example.org/pericia-audiovisual#Camera_7_6, http://example.org/pericia-audiovisual#Camera_9_6, http://example.org/pericia-audiovisual#Camera_9_1)
+       http://example.org/pericia-audiovisual#FonteDeCaptura - (http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_4, http://example.org/pericia-audiovisual#fc1, http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_7, http://example.org/pericia-audiovisual#FonteDeCaptura_Camera_9)
