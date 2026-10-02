@@ -1,0 +1,46 @@
+Individuo,Tipo,Fonte,Valor,Contexto,Esperado_Divergente,Inferido_Pellet_Divergente,Esperado_MetadadoComProbeScoreBaixo,Inferido_Pellet_MetadadoComProbeScoreBaixo,Status_Pellet
+Camera_4_avgfr,avg_frame_rate,Camera_4,15/1,Linha de base estável,Não,Não,Não,Não,100% Confirmado
+Camera_4_container,container,Camera_4,avi (score 1.00),Linha de base estável,Não,Não,Não,Não,100% Confirmado
+Camera_4_rfr,r_frame_rate,Camera_4,15/1,Linha de base estável,Não,Não,Não,Não,100% Confirmado
+Camera_7_1_avgfr,avg_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_1_container,container,Camera_7,avi (score 1.00),Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_1_rfr,r_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_2_avgfr,avg_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_2_container,container,Camera_7,avi (score 1.00),Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_2_rfr,r_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_3_avgfr,avg_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_3_container,container,Camera_7,avi (score 1.00),Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_3_rfr,r_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_4_avgfr,avg_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_4_container,container,Camera_7,avi (score 1.00),Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_4_rfr,r_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_5_avgfr,avg_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_5_container,container,Camera_7,avi (score 1.00),Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_5_rfr,r_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_6_avgfr,avg_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_6_container,container,Camera_7,avi (score 1.00),Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_7_6_rfr,r_frame_rate,Camera_7,15/1,Segmentação temporal,Não,Não,Não,Não,100% Confirmado
+Camera_9_1_avgfr,avg_frame_rate,Camera_9,25/1,Discrepância fps média,Sim,Sim,Não,Não,100% Confirmado
+Camera_9_1_container,container,Camera_9,hevc (score 0.51),Fluxo bruto / raw HEVC,Sim,Sim,Não,Não,100% Confirmado
+Camera_9_1_rfr,r_frame_rate,Camera_9,1200000/1,Discrepância fps nominal,Sim,Sim,Não,Não,100% Confirmado
+Camera_9_2_avgfr,avg_frame_rate,Camera_9,30/1,Taxa estável no segmento,Não,Não,Não,Não,100% Confirmado
+Camera_9_2_container,container,Camera_9,dhav (score 0.01),Contêiner proprietário DAV,Sim,Sim,Sim,Sim,100% Confirmado
+Camera_9_2_rfr,r_frame_rate,Camera_9,30/1,Taxa estável no segmento,Não,Não,Não,Não,100% Confirmado
+Camera_9_3_avgfr,avg_frame_rate,Camera_9,30/1,Taxa estável no segmento,Não,Não,Não,Não,100% Confirmado
+Camera_9_3_container,container,Camera_9,dhav (score 0.01),Contêiner proprietário DAV,Sim,Sim,Sim,Sim,100% Confirmado
+Camera_9_3_rfr,r_frame_rate,Camera_9,30/1,Taxa estável no segmento,Não,Não,Não,Não,100% Confirmado
+Camera_9_4_avgfr,avg_frame_rate,Camera_9,30/1,Taxa estável no segmento,Não,Não,Não,Não,100% Confirmado
+Camera_9_4_container,container,Camera_9,dhav (score 0.01),Contêiner proprietário DAV,Sim,Sim,Sim,Sim,100% Confirmado
+Camera_9_4_rfr,r_frame_rate,Camera_9,30/1,Taxa estável no segmento,Não,Não,Não,Não,100% Confirmado
+Camera_9_5_avgfr,avg_frame_rate,Camera_9,30/1,Taxa estável no segmento,Não,Não,Não,Não,100% Confirmado
+Camera_9_5_container,container,Camera_9,dhav (score 0.01),Contêiner proprietário DAV,Sim,Sim,Sim,Sim,100% Confirmado
+Camera_9_5_rfr,r_frame_rate,Camera_9,30/1,Taxa estável no segmento,Não,Não,Não,Não,100% Confirmado
+Camera_9_6_avgfr,avg_frame_rate,Camera_9,25/1,Discrepância fps média,Sim,Sim,Não,Não,100% Confirmado
+Camera_9_6_container,container,Camera_9,hevc (score 0.51),Fluxo bruto / raw HEVC,Sim,Sim,Não,Não,100% Confirmado
+Camera_9_6_rfr,r_frame_rate,Camera_9,1200000/1,Discrepância fps nominal,Sim,Sim,Não,Não,100% Confirmado
+Camera_9_7_avgfr,avg_frame_rate,Camera_9,25/1,Discrepância fps média,Sim,Sim,Não,Não,100% Confirmado
+Camera_9_7_container,container,Camera_9,hevc (score 0.51),Fluxo bruto / raw HEVC,Sim,Sim,Não,Não,100% Confirmado
+Camera_9_7_rfr,r_frame_rate,Camera_9,1200000/1,Discrepância fps nominal,Sim,Sim,Não,Não,100% Confirmado
+m1,r_frame_rate (amostra),cam01,15/1,ABox ilustrativa,Sim,Sim,Não,Não,100% Confirmado
+m2,avg_frame_rate (amostra),cam01,30/1,ABox ilustrativa,Sim,Sim,Não,Não,100% Confirmado
+m3,container (amostra),cam02,avi (score 0.31),ABox ilustrativa,Não,Não,Sim,Sim,100% Confirmado

@@ -1,0 +1,45 @@
+LOG DE EXECUÇÃO DO RACIOCINADOR HERMIT (OWL 2 DL) - V2
+Data/Hora: 2026-10-02 18:52:38
+Duração: 3.12 segundos
+Arquivo analisado: esquema_conceitual.ttl (esquema_conceitual_v2.owl)
+======================================================================
+
+* Owlready2 * Running HermiT...
+    java -Xmx2000M -cp C:\Users\Aldo\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit;C:\Users\Aldo\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit\HermiT.jar org.semanticweb.HermiT.cli.CommandLine -c -O -D -I file:///C:/Users/XXXX/AppData/Local/Temp/tmpe8lh5ynx -Y
+* Owlready2 * HermiT took 2.198234796524048 seconds
+* Owlready * Reparenting prov.invalidated: {owl.ObjectProperty, prov.influenced} => {prov.influenced}
+* Owlready * Reparenting prov.specializationOf: {owl.ObjectProperty, prov.alternateOf} => {prov.alternateOf}
+* Owlready * Reparenting D:\Mestrado\ECI\Brajis\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v2.temGeracao: {prov.wasGeneratedBy, owl.ObjectProperty} => {prov.wasGeneratedBy}
+* Owlready * Reparenting prov.activity: {owl.ObjectProperty, prov.influencer} => {prov.influencer}
+* Owlready * Reparenting prov.entity: {owl.ObjectProperty, prov.influencer} => {prov.influencer}
+* Owlready * Reparenting prov.agent: {owl.ObjectProperty, prov.influencer} => {prov.influencer}
+* Owlready * Reparenting prov.qualifiedPrimarySource: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedAssociation: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedQuotation: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedDelegation: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedCommunication: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedUsage: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedEnd: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedStart: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedRevision: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedGeneration: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedAttribution: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedDerivation: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.qualifiedInvalidation: {prov.qualifiedInfluence, owl.ObjectProperty} => {prov.qualifiedInfluence}
+* Owlready * Reparenting prov.wasStartedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasInformedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasInvalidatedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasGeneratedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasAttributedTo: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.used: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasDerivedFrom: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.hadMember: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.actedOnBehalfOf: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasAssociatedWith: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasEndedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+* Owlready * Reparenting D:\Mestrado\ECI\Brajis\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v2.temInvalidacao: {owl.ObjectProperty, prov.wasInvalidatedBy} => {prov.wasInvalidatedBy}
+* Owlready * Reparenting prov.hadPrimarySource: {owl.ObjectProperty, prov.wasDerivedFrom} => {prov.wasDerivedFrom}
+* Owlready * Reparenting prov.wasRevisionOf: {owl.ObjectProperty, prov.wasDerivedFrom} => {prov.wasDerivedFrom}
+* Owlready * Reparenting prov.wasQuotedFrom: {owl.ObjectProperty, prov.wasDerivedFrom} => {prov.wasDerivedFrom}
+* Owlready * (NB: only changes on entities loaded in Python are shown, other changes are done but not listed)
+

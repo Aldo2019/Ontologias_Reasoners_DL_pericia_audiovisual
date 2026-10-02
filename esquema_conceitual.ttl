@@ -13,16 +13,15 @@
 # proveniência audiovisual: um esquema conceitual em lógica
 # descritiva".
 #
-# AVISO: este arquivo NÃO foi submetido a testes de consistência
-# nem classificado por raciocinador (HermiT/Pellet/Konclude).
-# É fornecido para transparência e reprodutibilidade da proposta
-# conceitual, não como ontologia validada (ver Seção 6.4 —
-# Limitações — do artigo).
+# Implementado em OWL 2 DL e submetido a testes de consistência e
+# classificação com os raciocinadores HermiT v1.4.3.456 e Pellet
+# v2.3.1 (ver logs de execução no repositório, e Seção 6.4 do artigo
+# para a discussão de limitações e do escopo da validação).
 #################################################################
 
 <http://example.org/pericia-audiovisual> a owl:Ontology ;
     rdfs:label "Esquema conceitual — metadados de proveniência audiovisual"@pt ;
-    rdfs:comment "Proposta preliminar, não implementada nem validada. Ver Seção 6.4 do artigo."@pt ;
+    rdfs:comment "Ontologia experimental implementada em OWL 2 DL; consistência e classificações confirmadas por execução real de HermiT e Pellet. Ver Seção 6.4 do artigo para limitações."@pt ;
     owl:imports <http://www.w3.org/ns/prov-o> .
 
 #################################################################
@@ -71,14 +70,14 @@
 #################################################################
 
 :temFonte a owl:ObjectProperty ;
-    rdfs:subPropertyOf prov:wasGeneratedBy ;
     rdfs:domain :EvidenciaAudiovisual ;
     rdfs:range :EventoDeCaptura ;
-    rdfs:comment "Geração técnica do arquivo, mediada por um evento — não atribuição direta de responsabilidade a um agente (Seção 6.3)."@pt .
+    rdfs:comment "Relaciona a evidência ao evento de captura técnica que a gerou; corresponde a prov:wasGeneratedBy." .
 
-:temDispositivoEnvolvido a owl:ObjectProperty ;
+:temDispositivoUtilizado a owl:ObjectProperty ;
     rdfs:domain :EventoDeCaptura ;
-    rdfs:range :FonteDeCaptura .
+    rdfs:range :FonteDeCaptura ;
+    rdfs:comment "Relaciona o evento de captura ao dispositivo/sistema tecnicamente utilizado nessa atividade; corresponde a prov:used." .
 
 :temOperador a owl:ObjectProperty ;
     rdfs:domain :FonteDeCaptura ;
@@ -139,8 +138,8 @@
     ] ;
     rdfs:label "Metadado Divergente"@pt .
 
-# ConfiabilidadeBaixa ≡ MetadadoTécnico ⊓ ∃temGrauDeConfiança.(xsd:decimal[< "0.5"])
-:ConfiabilidadeBaixa a owl:Class ;
+# MetadadoComProbeScoreBaixo ≡ MetadadoTécnico ⊓ ∃temGrauDeConfiança.(xsd:decimal[< "0.5"])
+:MetadadoComProbeScoreBaixo a owl:Class ;
     rdfs:subClassOf :MetadadoTecnico ;
     owl:equivalentClass [
         a owl:Class ;
@@ -155,7 +154,7 @@
               ] ]
         )
     ] ;
-    rdfs:label "Confiabilidade Baixa"@pt .
+    rdfs:label "Metadado com Probe Score Baixo"@pt .
 
 #################################################################
 # ABox de exemplo (Seção 6.2.1) — individuos ilustrativos
@@ -178,13 +177,13 @@
 
 :m1 :correlacionaComDivergencia :m2 .
 :e2 :temFonte :ec1 .
-:ec1 :temDispositivoEnvolvido :fc1 .
+:ec1 :temDispositivoUtilizado :fc1 .
 
 # Classificações esperadas de um raciocinador padrão (não executado
 # neste repositório — ver aviso no topo do arquivo):
 #   :m1 rdf:type :MetadadoDivergente .
 #   :m2 rdf:type :MetadadoDivergente .
-#   :m3 rdf:type :ConfiabilidadeBaixa .
+#   :m3 rdf:type :MetadadoComProbeScoreBaixo .
 
 
 #################################################################
@@ -197,7 +196,7 @@
 #
 # Mesma ressalva do topo do arquivo: fatos ASSERIDOS a partir dos
 # valores brutos (comparação feita neste script, fora da ontologia);
-# classificações em MetadadoDivergente / ConfiabilidadeBaixa são o
+# classificações em MetadadoDivergente / MetadadoComProbeScoreBaixo são o
 # que um raciocinador inferiria a partir destes fatos — não foram
 # executadas por um raciocinador real neste repositório.
 #################################################################
@@ -216,7 +215,7 @@
 
 :Camera_4_evento a :EventoDeCaptura .
 :Camera_4 :temFonte :Camera_4_evento .
-:Camera_4_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_4 .
+:Camera_4_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_4 .
 
 :Camera_4_container a :MetadadoTecnico ;
     :temGrauDeConfianca "1.00"^^xsd:decimal ;
@@ -235,7 +234,7 @@
 
 :Camera_7_1_evento a :EventoDeCaptura .
 :Camera_7_1 :temFonte :Camera_7_1_evento .
-:Camera_7_1_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+:Camera_7_1_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_7 .
 
 :Camera_7_1_container a :MetadadoTecnico ;
     :temGrauDeConfianca "1.00"^^xsd:decimal ;
@@ -254,7 +253,7 @@
 
 :Camera_7_2_evento a :EventoDeCaptura .
 :Camera_7_2 :temFonte :Camera_7_2_evento .
-:Camera_7_2_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+:Camera_7_2_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_7 .
 
 :Camera_7_2_container a :MetadadoTecnico ;
     :temGrauDeConfianca "1.00"^^xsd:decimal ;
@@ -273,7 +272,7 @@
 
 :Camera_7_3_evento a :EventoDeCaptura .
 :Camera_7_3 :temFonte :Camera_7_3_evento .
-:Camera_7_3_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+:Camera_7_3_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_7 .
 
 :Camera_7_3_container a :MetadadoTecnico ;
     :temGrauDeConfianca "1.00"^^xsd:decimal ;
@@ -292,7 +291,7 @@
 
 :Camera_7_4_evento a :EventoDeCaptura .
 :Camera_7_4 :temFonte :Camera_7_4_evento .
-:Camera_7_4_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+:Camera_7_4_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_7 .
 
 :Camera_7_4_container a :MetadadoTecnico ;
     :temGrauDeConfianca "1.00"^^xsd:decimal ;
@@ -311,7 +310,7 @@
 
 :Camera_7_5_evento a :EventoDeCaptura .
 :Camera_7_5 :temFonte :Camera_7_5_evento .
-:Camera_7_5_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+:Camera_7_5_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_7 .
 
 :Camera_7_5_container a :MetadadoTecnico ;
     :temGrauDeConfianca "1.00"^^xsd:decimal ;
@@ -330,7 +329,7 @@
 
 :Camera_7_6_evento a :EventoDeCaptura .
 :Camera_7_6 :temFonte :Camera_7_6_evento .
-:Camera_7_6_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_7 .
+:Camera_7_6_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_7 .
 
 :Camera_7_6_container a :MetadadoTecnico ;
     :temGrauDeConfianca "1.00"^^xsd:decimal ;
@@ -349,7 +348,7 @@
 
 :Camera_9_1_evento a :EventoDeCaptura .
 :Camera_9_1 :temFonte :Camera_9_1_evento .
-:Camera_9_1_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+:Camera_9_1_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_9 .
 
 :Camera_9_1_container a :MetadadoTecnico ;
     :temGrauDeConfianca "0.51"^^xsd:decimal ;
@@ -368,7 +367,7 @@
 
 :Camera_9_2_evento a :EventoDeCaptura .
 :Camera_9_2 :temFonte :Camera_9_2_evento .
-:Camera_9_2_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+:Camera_9_2_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_9 .
 
 :Camera_9_2_container a :MetadadoTecnico ;
     :temGrauDeConfianca "0.01"^^xsd:decimal ;
@@ -387,7 +386,7 @@
 
 :Camera_9_3_evento a :EventoDeCaptura .
 :Camera_9_3 :temFonte :Camera_9_3_evento .
-:Camera_9_3_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+:Camera_9_3_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_9 .
 
 :Camera_9_3_container a :MetadadoTecnico ;
     :temGrauDeConfianca "0.01"^^xsd:decimal ;
@@ -406,7 +405,7 @@
 
 :Camera_9_4_evento a :EventoDeCaptura .
 :Camera_9_4 :temFonte :Camera_9_4_evento .
-:Camera_9_4_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+:Camera_9_4_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_9 .
 
 :Camera_9_4_container a :MetadadoTecnico ;
     :temGrauDeConfianca "0.01"^^xsd:decimal ;
@@ -425,7 +424,7 @@
 
 :Camera_9_5_evento a :EventoDeCaptura .
 :Camera_9_5 :temFonte :Camera_9_5_evento .
-:Camera_9_5_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+:Camera_9_5_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_9 .
 
 :Camera_9_5_container a :MetadadoTecnico ;
     :temGrauDeConfianca "0.01"^^xsd:decimal ;
@@ -444,7 +443,7 @@
 
 :Camera_9_6_evento a :EventoDeCaptura .
 :Camera_9_6 :temFonte :Camera_9_6_evento .
-:Camera_9_6_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+:Camera_9_6_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_9 .
 
 :Camera_9_6_container a :MetadadoTecnico ;
     :temGrauDeConfianca "0.51"^^xsd:decimal ;
@@ -463,7 +462,7 @@
 
 :Camera_9_7_evento a :EventoDeCaptura .
 :Camera_9_7 :temFonte :Camera_9_7_evento .
-:Camera_9_7_evento :temDispositivoEnvolvido :FonteDeCaptura_Camera_9 .
+:Camera_9_7_evento :temDispositivoUtilizado :FonteDeCaptura_Camera_9 .
 
 :Camera_9_7_container a :MetadadoTecnico ;
     :temGrauDeConfianca "0.51"^^xsd:decimal ;
@@ -518,7 +517,7 @@
 # (todas identificadas de forma consistente como 'avi',
 # probe_score=100/100) — incluída como contraste de controle:
 # aqui o raciocinador NÃO classificaria nenhum indivíduo em
-# MetadadoDivergente nem em ConfiabilidadeBaixa.
+# MetadadoDivergente nem em MetadadoComProbeScoreBaixo.
 #################################################################
 
 :Camera_4_container :correlacionaComEquivalencia :Camera_7_1_container .
@@ -543,14 +542,14 @@
 #   Camera_9_5_container  [identificação de contêiner divergente entre
 #   segmentos hevc/dhav da mesma câmera]
 #
-# ∈ ConfiabilidadeBaixa (4 indivíduos):
+# ∈ MetadadoComProbeScoreBaixo (4 indivíduos):
 #   Camera_9_2_container, Camera_9_3_container, Camera_9_4_container,
 #   Camera_9_5_container  [probe_score normalizado = 0.01, < 0.5]
 #
 # Casos-limite dignos de nota (Seção 6.4 — Limitações): os segmentos
 # Camera_9_1/9_6/9_7 têm probe_score normalizado = 0.51 — logo acima
 # do limiar de 0.5 — e por isso NÃO são classificados em
-# ConfiabilidadeBaixa apesar de representarem identificação de
+# MetadadoComProbeScoreBaixo apesar de representarem identificação de
 # contêiner como fluxo bruto, não como formato nomeado. Isso sugere
 # que o limiar de 0.5 (Seção 6.2), calibrado provisoriamente, pode
 # não capturar todos os casos de baixa confiabilidade observados no
@@ -560,4 +559,4 @@
 # Grupo de controle Câmera 4/7 (7 indivíduos _container, todos
 # probe_score normalizado = 1.00, r_frame_rate = avg_frame_rate em
 # todos os arquivos): nenhuma classificação em MetadadoDivergente ou
-# ConfiabilidadeBaixa — como esperado para fontes sem heterogeneidade.
+# MetadadoComProbeScoreBaixo — como esperado para fontes sem heterogeneidade.

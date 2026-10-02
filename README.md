@@ -37,9 +37,9 @@ A proposta conceitual foi **submetida a validação computacional formal** por m
 1. **Consistência Lógica:** Ambos os raciocinadores atestaram que a ontologia é **100% consistente e satisfatível**.
 2. **Concordância Inter-Reasoner:** Obteve-se **100% de equivalência** entre a predição teórica (Seção 6), as inferências do HermiT e as do Pellet:
    * 15 indivíduos classificados em `:MetadadoDivergente` (taxas nominais anômalas e divergência de contêineres hevc/dhav);
-   * 5 indivíduos classificados em `:ConfiabilidadeBaixa` (`probe_score` normalizado $< 0.5$);
+   * 5 indivíduos classificados em `:MetadadoComProbeScoreBaixo` (`probe_score` normalizado $< 0.5$);
    * 0 falso-positivo no grupo de controle (Câmeras 04 e 07);
-   * Validação empírica do caso-limite da Seção 6.4 (`probe_score` = 0.51 não classificado em baixa confiabilidade).
+   * Validação empírica do caso-limite da Seção 6.4 (`probe_score` = 0.51 não classificado em `:MetadadoComProbeScoreBaixo`).
 
 Os relatórios detalhados, logs de execução, tabelas em LaTeX e modelos com triplas inferidas estão disponíveis nas pastas `Resultados HermiT/` e `Resultados Pellet/`.
 
@@ -61,6 +61,7 @@ Texto completo da licença: https://creativecommons.org/licenses/by/4.0/deed.pt_
 * `ler_ttl.py`: Validação sintática do arquivo Turtle e conversão automática para RDF/XML.
 * `test_reasoner.py` / `gerar_resultados_hermit.py`: Execução e exportação dos testes do raciocinador HermiT.
 * `test_pellet.py` / `gerar_resultados_pellet.py`: Execução e exportação dos testes do raciocinador Pellet.
+* `executar_validacao_v2.py`: Pipeline unificado de execução e validação inter-reasoner com geração dos artefatos `_v2`.
 
 ## Uso
 
@@ -68,7 +69,7 @@ Requer Python 3.10+ com `owlready2` e `rdflib`, além de Java (JVM 11+) para a e
 
 # Esquema conceitual (OWL / Turtle)
 
-`esquema_conceitual.ttl` reproduz, em sintaxe Turtle (OWL 2 DL), os axiomas discutidos na Seção 6 do artigo: as sete classes principais (Seção 6.1), as propriedades de objeto e de dado e as duas classes definidas por restrição — `MetadadoDivergente` e `ConfiabilidadeBaixa` (Seção 6.2) —, além do alinhamento a PROV-O (Seção 6.3) e da ABox expandida do corpus real.
+`esquema_conceitual.ttl` reproduz, em sintaxe Turtle (OWL 2 DL), os axiomas discutidos na Seção 6 do artigo: as sete classes principais (Seção 6.1), as propriedades de objeto e de dado e as duas classes definidas por restrição — `MetadadoDivergente` e `MetadadoComProbeScoreBaixo` (Seção 6.2) —, além do alinhamento a PROV-O (Seção 6.3) e da ABox expandida do corpus real.
 
 ## Como inspecionar
 
