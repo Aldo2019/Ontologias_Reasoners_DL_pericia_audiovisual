@@ -1,0 +1,46 @@
+individuo,grupo,pertence_a_MetadadoDivergente,pertence_a_MetadadoComProbeScoreBaixo
+Camera_4_avgfr,Controle,N,N
+Camera_4_container,Controle,N,N
+Camera_4_rfr,Controle,N,N
+Camera_7_1_avgfr,Controle,N,N
+Camera_7_1_container,Controle,N,N
+Camera_7_1_rfr,Controle,N,N
+Camera_7_2_avgfr,Controle,N,N
+Camera_7_2_container,Controle,N,N
+Camera_7_2_rfr,Controle,N,N
+Camera_7_3_avgfr,Controle,N,N
+Camera_7_3_container,Controle,N,N
+Camera_7_3_rfr,Controle,N,N
+Camera_7_4_avgfr,Controle,N,N
+Camera_7_4_container,Controle,N,N
+Camera_7_4_rfr,Controle,N,N
+Camera_7_5_avgfr,Controle,N,N
+Camera_7_5_container,Controle,N,N
+Camera_7_5_rfr,Controle,N,N
+Camera_7_6_avgfr,Controle,N,N
+Camera_7_6_container,Controle,N,N
+Camera_7_6_rfr,Controle,N,N
+Camera_9_1_avgfr,Câmera 09,S,N
+Camera_9_1_container,Câmera 09,S,N
+Camera_9_1_rfr,Câmera 09,S,N
+Camera_9_2_avgfr,Câmera 09,N,N
+Camera_9_2_container,Câmera 09,S,S
+Camera_9_2_rfr,Câmera 09,N,N
+Camera_9_3_avgfr,Câmera 09,N,N
+Camera_9_3_container,Câmera 09,S,S
+Camera_9_3_rfr,Câmera 09,N,N
+Camera_9_4_avgfr,Câmera 09,N,N
+Camera_9_4_container,Câmera 09,S,S
+Camera_9_4_rfr,Câmera 09,N,N
+Camera_9_5_avgfr,Câmera 09,N,N
+Camera_9_5_container,Câmera 09,S,S
+Camera_9_5_rfr,Câmera 09,N,N
+Camera_9_6_avgfr,Câmera 09,S,N
+Camera_9_6_container,Câmera 09,S,N
+Camera_9_6_rfr,Câmera 09,S,N
+Camera_9_7_avgfr,Câmera 09,S,N
+Camera_9_7_container,Câmera 09,S,N
+Camera_9_7_rfr,Câmera 09,S,N
+m1,Amostra,S,N
+m2,Amostra,S,N
+m3,Amostra,N,S
