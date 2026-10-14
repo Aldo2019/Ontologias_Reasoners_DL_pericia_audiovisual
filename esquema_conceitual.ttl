@@ -9,9 +9,8 @@
 # Esquema conceitual em OWL 2 DL — proposta preliminar
 #
 # Corresponde aos axiomas discutidos na Seção 6 do artigo
-# "Padrões de heterogeneidade semântica em metadados de
-# proveniência audiovisual: um esquema conceitual em lógica
-# descritiva".
+# "Padrões de heterogeneidade em metadados de proveniência
+# audiovisual: um esquema conceitual em lógica descritiva".
 #
 # Implementado em OWL 2 DL e submetido a testes de consistência e
 # classificação com os raciocinadores HermiT v1.4.3.456 e Pellet
@@ -88,9 +87,10 @@
     rdfs:range :MetadadoTecnico .
 
 :temGeracao a owl:ObjectProperty ;
-    rdfs:subPropertyOf prov:wasGeneratedBy ;
+    rdfs:subPropertyOf prov:wasInfluencedBy ;
     rdfs:domain :EvidenciaAudiovisual ;
-    rdfs:range :EventoDeGeracao .
+    rdfs:range :EventoDeGeracao ;
+    rdfs:comment "Relaciona a evidência ao evento de sua incorporação formal à cadeia de custódia; não gera nova entidade, razão pela qual não corresponde a prov:wasGeneratedBy (Seção 6.3)."@pt .
 
 :temInvalidacao a owl:ObjectProperty ;
     rdfs:subPropertyOf prov:wasInvalidatedBy ;
@@ -118,7 +118,7 @@
 :temGrauDeConfianca a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:domain :MetadadoTecnico ;
     rdfs:range xsd:decimal ;
-    rdfs:comment "Imagem em xsd:decimal no intervalo [0,0; 1,0]."@pt .
+    rdfs:comment "Imagem em xsd:decimal; valores esperados entre 0,0 e 1,0 (o intervalo não é imposto por axioma)."@pt .
 
 #################################################################
 # Classes definidas por restrição (Seção 6.2)
@@ -138,7 +138,9 @@
     ] ;
     rdfs:label "Metadado Divergente"@pt .
 
-# MetadadoComProbeScoreBaixo ≡ MetadadoTécnico ⊓ ∃temGrauDeConfiança.(xsd:decimal[< "0.5"])
+# MetadadoComProbeScoreBaixo ≡ MetadadoTécnico ⊓ ∃temGrauDeConfiança.xsd:decimal[< 0.5]
+# (facet xsd:maxExclusive; equivalente em sintaxe funcional: DataSomeValuesFrom(:temGrauDeConfianca
+#  DatatypeRestriction(xsd:decimal xsd:maxExclusive "0.5"^^xsd:decimal)))
 :MetadadoComProbeScoreBaixo a owl:Class ;
     rdfs:subClassOf :MetadadoTecnico ;
     owl:equivalentClass [
@@ -179,11 +181,9 @@
 :e2 :temFonte :ec1 .
 :ec1 :temDispositivoUtilizado :fc1 .
 
-# Classificações esperadas de um raciocinador padrão (não executado
-# neste repositório — ver aviso no topo do arquivo):
-#   :m1 rdf:type :MetadadoDivergente .
-#   :m2 rdf:type :MetadadoDivergente .
-#   :m3 rdf:type :MetadadoComProbeScoreBaixo .
+# Classificações obtidas por HermiT v1.4.3.456 e Pellet v2.3.1 (ver
+# log_execucao_*_v3.txt e classificacao_*_v3.csv); coincidem com o
+# resultado teórico previsto pelo script populate_abox.py.
 
 
 #################################################################
@@ -194,11 +194,9 @@
 # identificadores de arquivo já são genéricos (Camera_N[_segmento]),
 # sem qualquer dado que identifique caso, operador ou instituição.
 #
-# Mesma ressalva do topo do arquivo: fatos ASSERIDOS a partir dos
-# valores brutos (comparação feita neste script, fora da ontologia);
-# classificações em MetadadoDivergente / MetadadoComProbeScoreBaixo são o
-# que um raciocinador inferiria a partir destes fatos — não foram
-# executadas por um raciocinador real neste repositório.
+# Classificações obtidas por HermiT v1.4.3.456 e Pellet v2.3.1 (ver
+# log_execucao_*_v3.txt e classificacao_*_v3.csv); coincidem com o
+# resultado teórico previsto pelo script populate_abox.py.
 #################################################################
 
 :FonteDeCaptura_Camera_4 a :FonteDeCaptura ;
@@ -528,10 +526,9 @@
 :Camera_4_container :correlacionaComEquivalencia :Camera_7_6_container .
 
 #################################################################
-# Resumo das classificações esperadas de um raciocinador padrão
-# sobre esta ABox (não executado neste repositório — ver aviso no
-# topo do arquivo). Calculado deterministicamente a partir dos
-# valores brutos por scripts/populate_abox.py.
+# Classificações obtidas por HermiT v1.4.3.456 e Pellet v2.3.1 (ver
+# log_execucao_*_v3.txt e classificacao_*_v3.csv); coincidem com o
+# resultado teórico previsto pelo script populate_abox.py.
 #################################################################
 
 # ∈ MetadadoDivergente (13 indivíduos):

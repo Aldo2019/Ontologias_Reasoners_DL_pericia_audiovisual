@@ -1,19 +1,19 @@
 LOG DE EXECUÇÃO DO RACIOCINADOR PELLET (OWL 2 DL) - V3
 [Nota de anonimização: Caminhos absolutos e identificadores de usuário foram substituídos por [omitido] conforme diretrizes de anonimato.]
 ===========================================================================
-Arquivo de entrada: esquema_conceitual_2.ttl
-SHA-256 do arquivo TTL: 7557c7225844fbb74967c6252a10259beec40c74f0bef3ce7e02123aa7acf644
+Arquivo de entrada: esquema_conceitual.ttl
+SHA-256 do arquivo TTL: e19f3ef363848ae5db7aa48df443ecb25e374ee36ff2d60c85749d4f916d669d
 Versões de ferramentas:
   - Java Runtime: java version "11.0.16.1" 2022-08-18 LTS
   - Pellet Reasoner: v2.3.1
 
 Etapas de execução (ISO 8601, America/Sao_Paulo):
-  - Início:                         2026-10-14T17:31:19.582257-03:00
-  - Teste de consistência:          2026-10-14T17:31:22.856341-03:00
-  - Teste de classes insatisfatíveis: 2026-10-14T17:31:24.257465-03:00
-  - Classificação TBox:             2026-10-14T17:31:25.776009-03:00
-  - Realização ABox:                2026-10-14T17:31:27.262974-03:00
-  - Fim:                            2026-10-14T17:31:28.733568-03:00
+  - Início:                         2026-10-14T17:46:43.603228-03:00
+  - Teste de consistência:          2026-10-14T17:46:44.828692-03:00
+  - Teste de classes insatisfatíveis: 2026-10-14T17:46:46.286262-03:00
+  - Classificação TBox:             2026-10-14T17:46:47.702861-03:00
+  - Realização ABox:                2026-10-14T17:46:49.335526-03:00
+  - Fim:                            2026-10-14T17:46:50.782634-03:00
 
 Verificação de comandos no Pellet CLI:
   - O comando 'pellet help' lista: classify, consistency, entail, explain, extract, info, lint, modularity, query, realize, trans-tree, unsat.
@@ -25,16 +25,16 @@ Consistent (ontologia): Yes
 Classes insatisfatíveis (equivalentes a owl:Nothing, exceto a própria owl:Nothing): nenhuma
 ===========================================================================
 
---- 1. TESTE DE CONSISTÊNCIA (Duração: 1.40s) ---
-Comando: pellet consistency --ignore-imports esquema_conceitual_2.ttl
+--- 1. TESTE DE CONSISTÊNCIA (Duração: 1.46s) ---
+Comando: pellet consistency --ignore-imports esquema_conceitual.ttl
 Consistent: Yes
 
---- 2. DETECÇÃO DE CLASSES INSATISFATÍVEIS (Duração: 1.52s) ---
-Comando: pellet unsat --ignore-imports esquema_conceitual_2.ttl
+--- 2. DETECÇÃO DE CLASSES INSATISFATÍVEIS (Duração: 1.42s) ---
+Comando: pellet unsat --ignore-imports esquema_conceitual.ttl
 Found no unsatisfiable concepts.
 
---- 3. CLASSIFICAÇÃO DA HIERARQUIA TBOX (Duração: 1.49s) ---
-Comando: pellet classify --ignore-imports esquema_conceitual_2.ttl
+--- 3. CLASSIFICAÇÃO DA HIERARQUIA TBOX (Duração: 1.63s) ---
+Comando: pellet classify --ignore-imports esquema_conceitual.ttl
 http://www.w3.org/2002/07/owl#Thing
     http://example.org/pericia-audiovisual#MetadadoTecnico
        http://example.org/pericia-audiovisual#MetadadoComProbeScoreBaixo
@@ -50,8 +50,8 @@ http://www.w3.org/2002/07/owl#Thing
        http://example.org/pericia-audiovisual#EvidenciaAudiovisual
        http://example.org/pericia-audiovisual#FonteDeCaptura
 
---- 4. REALIZAÇÃO DAS INSTÂNCIAS ABOX (Duração: 1.47s) ---
-Comando: pellet realize --ignore-imports esquema_conceitual_2.ttl
+--- 4. REALIZAÇÃO DAS INSTÂNCIAS ABOX (Duração: 1.45s) ---
+Comando: pellet realize --ignore-imports esquema_conceitual.ttl
 STDERR:
 Classifying 15 elements
 

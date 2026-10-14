@@ -1,8 +1,8 @@
 # Verificação de Validação Ontológica — Execução v3
 
-- **Arquivo analisado:** `esquema_conceitual_2.ttl`
-- **SHA-256:** `7557c7225844fbb74967c6252a10259beec40c74f0bef3ce7e02123aa7acf644`
-- **Data/Hora da verificação:** `2026-10-14T17:31:28.738126-03:00`
+- **Arquivo analisado:** `esquema_conceitual.ttl`
+- **SHA-256:** `e19f3ef363848ae5db7aa48df443ecb25e374ee36ff2d60c85749d4f916d669d`
+- **Data/Hora da verificação:** `2026-10-14T17:46:50.786247-03:00`
 - **Ferramentas:** Python 3.13.16, Owlready2 0.51, Java java version "11.0.16.1" 2022-08-18 LTS, HermiT v1.4.3.456 (core HermiT 1.3.8.1099 em Owlready2), Pellet v2.3.1
 - **Nota de anonimização:** Identificadores pessoais e caminhos absolutos foram sanitizados com `[omitido]`.
 

@@ -1,8 +1,8 @@
 LOG DE EXECUÇÃO DO RACIOCINADOR HERMIT (OWL 2 DL) - V3
 [Nota de anonimização: Caminhos absolutos e identificadores de usuário foram substituídos por [omitido] conforme diretrizes de anonimato.]
 ===========================================================================
-Arquivo de entrada: esquema_conceitual_2.ttl
-SHA-256 do arquivo TTL: 7557c7225844fbb74967c6252a10259beec40c74f0bef3ce7e02123aa7acf644
+Arquivo de entrada: esquema_conceitual.ttl
+SHA-256 do arquivo TTL: e19f3ef363848ae5db7aa48df443ecb25e374ee36ff2d60c85749d4f916d669d
 Versões de ferramentas:
   - Python: 3.13.16
   - Owlready2: 0.51
@@ -10,39 +10,87 @@ Versões de ferramentas:
   - HermiT Reasoner: v1.4.3.456 (core HermiT 1.3.8.1099 em Owlready2)
 
 Etapas de execução (ISO 8601, America/Sao_Paulo):
-  - Início:                 2026-10-14T17:31:13.707021-03:00
-  - Carga da ontologia:     2026-10-14T17:31:13.707044-03:00
-  - Chamada do raciocinador: 2026-10-14T17:31:14.567060-03:00
-  - Fim:                    2026-10-14T17:31:16.737983-03:00
-Duração da inferência: 2.17 segundos
+  - Início:                 2026-10-14T17:46:37.392272-03:00
+  - Carga da ontologia:     2026-10-14T17:46:37.392296-03:00
+  - Chamada do raciocinador: 2026-10-14T17:46:38.252267-03:00
+  - Fim:                    2026-10-14T17:46:40.536523-03:00
+Duração da inferência: 2.28 segundos
 ===========================================================================
 Consistent (ontologia): Yes
 Classes insatisfatíveis (equivalentes a owl:Nothing, exceto a própria owl:Nothing): nenhuma
 
-Confirmação independente via OWL API (HermiT Reasoner direto):
+===========================================================================
+CONFIRMAÇÃO INDEPENDENTE VIA OWL API (HermiT Reasoner direto):
+===========================================================================
+Resultados obtidos via OWL API:
   - reasoner.isConsistent(): Yes
-  - reasoner.getUnsatisfiableClasses(): nenhuma
+  - reasoner.getUnsatisfiableClasses(): nenhuma (apenas owl:Nothing)
+
 Comparação lado a lado (Owlready2 vs OWL API direta):
-  - Consistência: Owlready2 = Yes | OWL API = Yes (Consistência confirmada identicamente por ambas as interfaces)
+  - Consistência:           Owlready2 = Yes | OWL API = Yes (Consistência confirmada identicamente por ambas as interfaces)
   - Classes insatisfatíveis: Owlready2 = nenhuma | OWL API = nenhuma (Concordância total: 0 classes insatisfatíveis)
 
+--- Saída bruta da execução do validador Java / OWL API (anonimizada) ---
+OWLAPI reasoner.isConsistent(): Yes
+OWLAPI reasoner.getUnsatisfiableClasses(): nenhuma (apenas owl:Nothing)
+
+--- Trecho do código Java utilizado para invocação direta da OWL API com HermiT ---
+```java
+import java.io.File;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.io.IRIDocumentSource;
+import org.semanticweb.HermiT.Reasoner;
+import org.semanticweb.owlapi.reasoner.Node;
+
+public class ValidadorHermitOWLAPI {
+    public static void main(String[] args) {
+        try {
+            File file = new File(args[0]);
+            OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+            OWLOntologyLoaderConfiguration config = new OWLOntologyLoaderConfiguration()
+                .setMissingImportHandlingStrategy(MissingImportHandlingStrategy.SILENT);
+            OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new IRIDocumentSource(IRI.create(file.toURI())), config);
+            Reasoner reasoner = new Reasoner(ontology);
+            boolean consistent = reasoner.isConsistent();
+            System.out.println("OWLAPI reasoner.isConsistent(): " + (consistent ? "Yes" : "No"));
+            Node<OWLClass> unsat = reasoner.getUnsatisfiableClasses();
+            int unsatCount = 0;
+            StringBuilder sb = new StringBuilder();
+            for (OWLClass c : unsat.getEntities()) {
+                if (!c.isOWLNothing()) {
+                    unsatCount++;
+                    if (sb.length() > 0) sb.append(", ");
+                    sb.append(c.getIRI().getFragment());
+                }
+            }
+            System.out.println("OWLAPI reasoner.getUnsatisfiableClasses(): " + (unsatCount > 0 ? sb.toString() : "nenhuma (apenas owl:Nothing)"));
+        } catch (Exception e) {
+            System.err.println("ERRO_OWLAPI: " + e.getMessage());
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+}
+```
+
 ===========================================================================
-SAÍDA DO PROCESSO HERMIT VIA OWLREADY2 (SANIIZADA):
+SAÍDA DO PROCESSO HERMIT VIA OWLREADY2 (SANITIZADA):
 * Owlready2 * Running HermiT...
-    java -Xmx2000M -cp C:\Users\[omitido]\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit;C:\Users\[omitido]\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit\HermiT.jar org.semanticweb.HermiT.cli.CommandLine -c -O -D -I file:///C:/Users/[omitido]/AppData/Local/Temp/tmp4wdksv1d -Y
-* Owlready2 * HermiT took 2.1352486610412598 seconds
-* Owlready * Reparenting [omitido]\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v3.temGeracao: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.wasAttributedTo: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.actedOnBehalfOf: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.wasInvalidatedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.wasDerivedFrom: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.wasStartedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.wasInformedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.wasEndedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.hadMember: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.wasGeneratedBy: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.wasAssociatedWith: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
-* Owlready * Reparenting prov.used: {owl.ObjectProperty, prov.wasInfluencedBy} => {prov.wasInfluencedBy}
+    java -Xmx2000M -cp C:\Users\[omitido]\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit;C:\Users\[omitido]\AppData\Roaming\Python\Python313\site-packages\owlready2\hermit\HermiT.jar org.semanticweb.HermiT.cli.CommandLine -c -O -D -I file:///C:/Users/[omitido]/AppData/Local/Temp/tmp_v397k2q -Y
+* Owlready2 * HermiT took 2.2544827461242676 seconds
+* Owlready * Reparenting [omitido]\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v3.temGeracao: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasAttributedTo: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.actedOnBehalfOf: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasInvalidatedBy: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasDerivedFrom: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasStartedBy: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasInformedBy: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasEndedBy: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.hadMember: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasGeneratedBy: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.wasAssociatedWith: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
+* Owlready * Reparenting prov.used: {prov.wasInfluencedBy, owl.ObjectProperty} => {prov.wasInfluencedBy}
 * Owlready * Reparenting prov.qualifiedCommunication: {owl.ObjectProperty, prov.qualifiedInfluence} => {prov.qualifiedInfluence}
 * Owlready * Reparenting prov.qualifiedRevision: {owl.ObjectProperty, prov.qualifiedInfluence} => {prov.qualifiedInfluence}
 * Owlready * Reparenting prov.qualifiedQuotation: {owl.ObjectProperty, prov.qualifiedInfluence} => {prov.qualifiedInfluence}
@@ -59,7 +107,7 @@ SAÍDA DO PROCESSO HERMIT VIA OWLREADY2 (SANIIZADA):
 * Owlready * Reparenting prov.entity: {owl.ObjectProperty, prov.influencer} => {prov.influencer}
 * Owlready * Reparenting prov.activity: {owl.ObjectProperty, prov.influencer} => {prov.influencer}
 * Owlready * Reparenting prov.agent: {owl.ObjectProperty, prov.influencer} => {prov.influencer}
-* Owlready * Reparenting [omitido]\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v3.correlacionaComDivergencia: {[omitido]\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v3.correlacionaCom, owl.ObjectProperty, owl.SymmetricProperty} => {[omitido]\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v3.correlacionaCom}
+* Owlready * Reparenting [omitido]\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v3.correlacionaComDivergencia: {owl.SymmetricProperty, owl.ObjectProperty, [omitido]\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v3.correlacionaCom} => {[omitido]\Ontologias_Reasoners_DL_pericia_audiovisual\esquema_conceitual_v3.correlacionaCom}
 * Owlready * Reparenting prov.specializationOf: {prov.alternateOf, owl.ObjectProperty} => {prov.alternateOf}
 * Owlready * Reparenting prov.wasQuotedFrom: {owl.ObjectProperty, prov.wasDerivedFrom} => {prov.wasDerivedFrom}
 * Owlready * Reparenting prov.wasRevisionOf: {owl.ObjectProperty, prov.wasDerivedFrom} => {prov.wasDerivedFrom}
